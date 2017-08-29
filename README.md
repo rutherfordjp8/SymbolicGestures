@@ -4,14 +4,14 @@ The project description
 
 ## Team
 
-- teamMember
-- teamMember
-- teamMember
-- teamMember
+- Jonathan Kim
+- Jerry Xia
+- Sean Hong
+- Patrick Rutherford
 
 ## Roadmap
 
-View the project roadmap [here](LINK_TO_DOC)
+View the project roadmap [here](https://docs.google.com/spreadsheets/d/1SDp3JtDep4XBbEUkHNBjYrdDMHNbz-1prmDMqMD8rC0/edit?usp=sharing)
 
 ## Contributing
 
@@ -27,7 +27,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
 
 ## Usage
 
-> Some usage instructions
+Checkout the app at https://OfferOverflow.herokuapp.com
 
 ## Requirements
 
@@ -56,7 +56,7 @@ yarn global add grunt-cli knex eslint
 
 ## App Configuration
 
-Override settings `config/default.json` in any environment by making a copy of `config/ENV.example.json` and naming it `config/ENV.json` and setting the appropriate variable. 
+Override settings `config/default.json` in any environment by making a copy of `config/ENV.example.json` and naming it `config/ENV.json` and setting the appropriate variable.
 
 For environments that require use of environment variables, you can supply variables as defined in `config/custom-environment-variables.json`.
 
@@ -102,5 +102,3 @@ To run server: `yarn run start`
 To run tests: `yarn run test`
 
 To run your redis server for the session store `redis-server`
-
-
