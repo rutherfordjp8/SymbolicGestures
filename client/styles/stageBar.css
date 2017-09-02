@@ -1,0 +1,109 @@
+.stageBar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.stageBar li {
+  padding: 15px;
+  font-size: 15px;
+  color: black;
+  float: left;
+  border-width: 20px 20px 20px 20px;
+  border-color: red;
+}
+
+.addStage {
+  padding: 5px;
+  color: white;
+  text-align: center;
+  background: blue;
+  border-width: 2px;
+  border-color: blue;
+  border-radius: 50%;
+  float: right;
+}
+.arrows { white-space: nowrap; }
+.arrows li {
+    display: inline-block;
+    line-height: 26px;
+    margin: 0 9px 0 -10px;
+    padding: 0 20px;
+    position: relative;
+}
+.arrows li::before,
+.arrows li::after {
+    border-right: 1px solid #666666;
+    content: '';
+    display: block;
+    height: 50%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: -1;
+    transform: skewX(45deg);
+}
+.arrows li::after {
+    bottom: 0;
+    top: auto;
+    transform: skewX(-45deg);
+}
+
+.arrows li:last-of-type::before,
+.arrows li:last-of-type::after {
+    display: none;
+}
+
+.arrows li a {
+   font: bold 24px Sans-Serif;
+   letter-spacing: -1px;
+   text-decoration: none;
+}
+/*#stageBar li a::after {
+  content: " ";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+  border-left: 30px solid hsla(34,85%,35%,1);
+  position: absolute;
+  top: 50%;
+  margin-top: -50px;
+  left: 100%;
+  z-index: 2;
+}
+
+#stageBar li a::before {
+  content: " ";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+  border-left: 30px solid white;
+  position: absolute;
+  top: 50%;
+  margin-top: -50px;
+  margin-left: 1px;
+  left: 100%;
+  z-index: 1;
+}*/
+/*#stageBar a:before, #stageBar a:after {
+  position:absolute;
+  content:"";
+  height:0;
+  width:1px;
+  top:50%;
+  left:-25px;
+  margin-top: -24px;
+  border:      24px solid #eee;
+  border-right: 0 !important;
+  border-left-color: transparent !important;
+}
+#stageBar a:before{
+  left:-26px;
+  border: 24px solid #555;
+}*/
