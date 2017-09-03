@@ -1,11 +1,11 @@
 const faker = require('faker');
 const format = require('date-fns/format');
 
-let stages = ['applied',
-  'phone interview',
-  'on site interview',
-  'OFFERED~~~',
-  'declined'];
+let stages = ['Applied',
+  'Phone Screen',
+  'On Site',
+  'OFFER',
+  'Denied'];
 
 let sources = ['LinkedIn',
   'Indeed',

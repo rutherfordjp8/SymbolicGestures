@@ -32,3 +32,7 @@
   border: 1px dotted blue;
   background: blue;
 }
+
+.practice {
+  color: rgba(255, 193, 7, .5);
+}
