@@ -14,7 +14,7 @@ export default class ApplicationTable extends React.Component {
   }
 
   handleClick(application) {
-    console.log(application);
+    // console.log(application);
     this.setState({ selectedApplication: application });
   }
 
