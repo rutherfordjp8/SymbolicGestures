@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 
 // import TableAndDrawer from './components/TableAndDrawer.jsx';
 
-// const fakeApplicationsGenerator = require('./fakeApplcationsGenerator.js');
+const fakeApplicationsGenerator = require('./../../config/fakeApplcationsGenerator.js');
 
-// let fakeApplications = fakeApplicationsGenerator(15);
+let fakeApplications = fakeApplicationsGenerator(15);
 
 const seanStyleBox = require('./../styles/seanStyleBox.css');
 
@@ -13,8 +13,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // applications: fakeApplications
-      applications: ''
+      applications: fakeApplications
+      // applications: ''
     };
   }
 
