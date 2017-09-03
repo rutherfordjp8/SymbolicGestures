@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import DrawerAndApplicationTable from './components/DrawerAndApplicationTable.jsx';
 
-const fakeApplicationsGenerator = require('./../../config/fakeApplcationsGenerator.js');
+const fakeApplicationsGenerator = require('./../../config/fakeApplicationsGenerator.js');
 
 let fakeApplications = fakeApplicationsGenerator(15);
 
