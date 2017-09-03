@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// import TableAndDrawer from './components/TableAndDrawer.jsx';
+import DrawerAndApplicationTable from './components/DrawerAndApplicationTable.jsx';
 
 const fakeApplicationsGenerator = require('./../../config/fakeApplcationsGenerator.js');
 
 let fakeApplications = fakeApplicationsGenerator(15);
+
 
 const seanStyleBox = require('./../styles/seanStyleBox.css');
 
@@ -34,11 +35,11 @@ class App extends React.Component {
           </div>
         </div>
 
-        {/* <div className="box_94per_3perMg">
-          <TableAndDrawer
+        <div className={seanStyleBox.box_94per_3perMg}>
+          <DrawerAndApplicationTable
             applications={this.state.applications}
           />
-        </div> */}
+        </div> 
       </div>
     );
   }
