@@ -25,7 +25,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div className="box_w100per_h70px" />
+        <div className={seanStyleBox.box_94per_3perMg} />
 
         {/* <div className="box_94per_3perMg"> */}
         <div className={seanStyleBox.box_94per_3perMg}>
