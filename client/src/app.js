@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 
 // let fakeApplications = fakeApplicationsGenerator(15);
 
-let seanStyleBox = './../styles/seanStyleBox.css';
+const seanStyleBox = './../styles/seanStyleBox.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -34,11 +34,11 @@ class App extends React.Component {
           </div>
         </div>
 
-        <div className="box_94per_3perMg">
+        {/* <div className="box_94per_3perMg">
           <TableAndDrawer
             applications={this.state.applications}
           />
-        </div>
+        </div> */}
       </div>
     );
   }
