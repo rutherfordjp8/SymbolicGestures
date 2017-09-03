@@ -2,7 +2,7 @@ import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Table, Segment } from 'semantic-ui-react';
 
-// import MateUiRightDrawer from './MateUiRightDrawer.jsx';
+import Drawer from './Drawer.jsx';
 
 export default class ApplicationTable extends React.Component {
   constructor(props) {
@@ -23,9 +23,9 @@ export default class ApplicationTable extends React.Component {
     const applications = this.props.applications || [];
     return (<div>
 
-      {/* <MuiThemeProvider>
-        <MateUiRightDrawer application={this.state.selectedApplication} />
-      </MuiThemeProvider> */}
+      <MuiThemeProvider>
+        <Drawer application={this.state.selectedApplication} />
+      </MuiThemeProvider>
 
       <Segment style={segmentStyle}>
 
