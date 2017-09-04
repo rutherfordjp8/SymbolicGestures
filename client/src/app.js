@@ -6,7 +6,21 @@ import DrawerAndApplicationTable from './components/DrawerAndApplicationTable.js
 const fakeApplicationsGenerator = require('./../../config/fakeApplicationsGenerator.js');
 
 let fakeApplications = fakeApplicationsGenerator(15);
+let fakeStagesSettings = [
+  { name: 'Applied', backgroundColor: '#FFC107', textColor: 'black' },
+  { name: 'Phone Screen', backgroundColor: '#2196F3', textColor: 'white' },
+  { name: 'OFFER', backgroundColor: '#009688', textColor: 'white' },
+  { name: 'Denied', backgroundColor: '#F44336', textColor: 'white' },
+  { name: 'On Site', backgroundColor: '#F44336', textColor: 'white' }
+];
 
+let stageNameToColorHash = {};
+fakeStagesSettings.forEach((setting) => {
+  stageNameToColorHash[setting.name] = {
+    backgroundColor: setting.backgroundColor,
+    color: setting.textColor,
+  };
+});
 
 const seanStyleBox = require('./../styles/seanStyleBox.css');
 
@@ -14,8 +28,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      applications: fakeApplications
-      // applications: ''
+      applications: fakeApplications,
+      stagesSettings: fakeStagesSettings,
+      stageNameToColorHash,
     };
   }
 
@@ -38,8 +53,10 @@ class App extends React.Component {
         <div className={seanStyleBox.box_94per_3perMg}>
           <DrawerAndApplicationTable
             applications={this.state.applications}
+            stagesSettings={this.state.applications}
+            stageNameToColorHash={this.state.stageNameToColorHash}
           />
-        </div> 
+        </div>
       </div>
     );
   }

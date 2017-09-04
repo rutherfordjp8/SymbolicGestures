@@ -21,12 +21,12 @@ export default class ApplicationTable extends React.Component {
   render() {
     const segmentStyle = { padding: 0 };
     const applications = this.props.applications || [];
+    const stageNameToColorHash = this.props.stageNameToColorHash || {};
     return (<div>
 
       <MuiThemeProvider>
         <Drawer application={this.state.selectedApplication} />
       </MuiThemeProvider>
-
       <Segment style={segmentStyle}>
 
         <Table singleLine selectable>
@@ -48,7 +48,9 @@ export default class ApplicationTable extends React.Component {
                   <Table.Cell>{application.createdAt}</Table.Cell>
                   <Table.Cell>{application.companyName}</Table.Cell>
                   <Table.Cell>{application.jobTitle}</Table.Cell>
-                  <Table.Cell>{application.stage}</Table.Cell>
+                  <Table.Cell
+                    style={stageNameToColorHash[application.stage]}
+                  >{application.stage}</Table.Cell>
                   <Table.Cell>{application.jobPostingLink}</Table.Cell>
                   <Table.Cell>{application.jobPostingSource}</Table.Cell>
                 </Table.Row>
