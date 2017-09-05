@@ -10,9 +10,9 @@ class AppDrawerNoteItem extends React.Component {
     return (
       <div>
         <div>
-          {this.props.application.notes.map((note) => {
+          {this.props.application.notes.map((note,index) => {
             return (
-              <p>{note.type + '    ' + note.note }</p>
+              <p key={index}>{note.type + '    ' + note.note }</p>
             );
           })}
         </div>

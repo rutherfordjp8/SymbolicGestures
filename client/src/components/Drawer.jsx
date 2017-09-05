@@ -27,44 +27,6 @@ export default class MateUiRightDrawer extends React.Component {
         />
         <Drawer width={'70%'} openSecondary={true} open={this.state.open} >
           <AppDrawer application={this.props.application}/>
-          {/* <div> {application.createdAt} </div>
-          <div> {application.companyName} </div>
-          <div> {application.jobTitle} </div>
-          <div> {application.stage} </div>
-          <div> {application.jobPostingLink} </div>
-          <div> {application.jobPostingSource} </div>
-          <div> {application.appliedAt} </div>
-          <div> {application.updatedAt} </div>
-          <div> {application.locaton} </div>
-          <div> {application.jobPostingToPdfLink} </div>
-          <div>
-            {application.notes.map((note) => {
-              return (
-                <p>{note.type + '////' + note.note }</p>
-              );
-            })}
-          </div>
-          <div>
-            {application.histories.map((history) => {
-              return (
-                <p>{history.date + '////' + history.event }</p>
-              );
-            })}
-          </div>
-          <div>
-            {application.contacts.map((contact) => {
-              return (
-                <p>
-                  {
-                    contact.name + '////'
-                  + contact.role + '////'
-                  + contact.email + '////'
-                  + contact.phone + '////'
-                  }
-                </p>
-              );
-            })}
-          </div> */}
         </Drawer>
       </div>
     );
