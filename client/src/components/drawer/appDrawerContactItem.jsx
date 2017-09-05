@@ -10,9 +10,9 @@ class AppDrawerContactItem extends React.Component {
     return (
       <div>
         <div>
-          {this.props.application.contacts.map((contact) => {
+          {this.props.application.contacts.map((contact,index) => {
             return (
-              <p>
+              <p key={index}>
                 {
                   contact.name + '    '
                 + contact.role + '    '
