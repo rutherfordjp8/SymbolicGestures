@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import AppDrawer from './components/drawer/appDrawer'
 
 import DrawerAndApplicationTable from './components/DrawerAndApplicationTable.jsx';
 
@@ -57,6 +58,7 @@ class App extends React.Component {
             stageNameToColorHash={this.state.stageNameToColorHash}
           />
         </div>
+
       </div>
     );
   }
