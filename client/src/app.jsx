@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppDrawer from './components/drawer/appDrawer'
+import AppDrawer from './components/drawer/appDrawer.jsx'
 
 import DrawerAndApplicationTable from './components/DrawerAndApplicationTable.jsx';
 

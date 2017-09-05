@@ -1,5 +1,5 @@
 import React from 'react';
-import AppDrawerContactItem from './appDrawerContactItem'
+import AppDrawerContactItem from './appDrawerContactItem.jsx'
 
 class AppDrawerContact extends React.Component {
   constructor(props) {

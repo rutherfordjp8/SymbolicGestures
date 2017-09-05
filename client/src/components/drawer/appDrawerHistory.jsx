@@ -1,5 +1,5 @@
 import React from 'react';
-import AppDrawerHistoryItem from './appDrawerHistoryItem';
+import AppDrawerHistoryItem from './appDrawerHistoryItem.jsx';
 
 class AppDrawerHistory extends React.Component {
   constructor(props) {

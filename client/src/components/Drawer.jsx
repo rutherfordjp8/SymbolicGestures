@@ -1,7 +1,8 @@
 import React from 'react';
 import Drawer from 'material-ui/Drawer';
-import AppDrawer from './drawer/appDrawer';
 import RaisedButton from 'material-ui/RaisedButton';
+
+import AppDrawer from './drawer/appDrawer.jsx';
 
 const seanStyleBox = require('./../../styles/seanStyleBox.css');
 
