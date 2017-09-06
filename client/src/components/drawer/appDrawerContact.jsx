@@ -18,6 +18,8 @@ class AppDrawerContact extends React.Component {
       role: '',
       phone: ''
     };
+    this.props.application.contacts = this.props.application.contacts || [];
+
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleChange = this.handleChange.bind(this);

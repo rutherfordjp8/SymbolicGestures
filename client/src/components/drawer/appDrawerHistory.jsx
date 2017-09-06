@@ -5,6 +5,8 @@ class AppDrawerHistory extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.props.application.histories = this.props.application.histories || [];
+
   }
 
   render() {

@@ -5,6 +5,7 @@ class AppDrawerNote extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.props.application.notes = this.props.application.notes || [];
   }
 
   render() {
