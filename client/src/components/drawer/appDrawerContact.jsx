@@ -27,6 +27,7 @@ class AppDrawerContact extends React.Component {
     this.setState({open: true});
   };
 
+//close the dialog box, erases existing value in the fields
   handleClose() {
     this.setState({open: false});
     this.setState({
@@ -37,13 +38,14 @@ class AppDrawerContact extends React.Component {
     })
   };
 
+// handle input change for all 4 fields, get id from event and change corresponding state value
   handleChange(event) {
     var key = event.target.id;
     var val = event.target.value;
     var obj  = {};
     obj[key] = val;
     this.setState(obj);
-    console.log('need to pass this to server', this.state);
+    // console.log('need to pass this to server', this.state);
   };
 
   render() {
@@ -65,7 +67,7 @@ class AppDrawerContact extends React.Component {
       <div>
         <h2>AppDrawerContact</h2>
         <div>
-          <RaisedButton label="Add Contact" onClick={this.handleOpen} />
+          <RaisedButton label="Add Contact" onClick={this.handleOpen} primary={true}/>
           <Dialog
             title="Enter Contact Info"
             actions={actions}
@@ -104,8 +106,12 @@ class AppDrawerContact extends React.Component {
           </Dialog>
         </div>
 
+        {this.props.application.contacts.map((contact,index) => {
+          return (
+            <AppDrawerContactItem contact={contact} key={index}/>
+          );
+        })}
 
-        <AppDrawerContactItem application={this.props.application}/>
 
       </div>
     );
