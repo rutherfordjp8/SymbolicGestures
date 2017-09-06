@@ -28,7 +28,7 @@ export default class MateUiRightDrawer extends React.Component {
           label="Toggle Drawer"
           onClick={this.handleToggle}
         />
-        <Drawer width={'70%'} openSecondary={true} open={this.state.open} >
+        <Drawer width={'70%'} openSecondary={true} open={this.state.open} className="JerryDrawer">
           <AppDrawer application={this.props.application} />
         </Drawer>
       </div>

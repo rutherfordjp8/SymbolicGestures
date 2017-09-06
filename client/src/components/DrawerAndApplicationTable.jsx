@@ -6,6 +6,26 @@ import { format } from 'date-fns';
 
 import MateUiRightDrawer from './MateUiRightDrawer.jsx';
 
+const generateEmptyApplicaton = () => {
+  let currentDate = format(new Date(), 'YYYY-MM-DD-ddd-HH-MM-ss');
+  let emptyApplication = {
+    created_at: currentDate,
+    company_name: '',
+    job_title: '',
+    stage: '',
+    job_posting_link: '',
+    job_posting_source: '',
+    applied_at: '',
+    updated_at: '',
+    locaton: '',
+    job_posting_to_pdf_link: '',
+    notes: [],
+    histories: [],
+    contacts: [],
+  };
+  return emptyApplication;
+};
+
 export default class DrawerAndApplicationTable extends React.Component {
   constructor(props) {
     super(props);
@@ -25,37 +45,20 @@ export default class DrawerAndApplicationTable extends React.Component {
   }
 
   handleAddButtonClick() {
-    let currentDate = format(new Date(), 'YYYY-MM-DD-ddd-HH-MM-ss');
-    let emptyApplication = {
-      created_at: currentDate,
-      company_name: '',
-      job_title: '',
-      stage: '',
-      job_posting_link: '',
-      job_posting_source: '',
-      applied_at: '',
-      updated_at: '',
-      locaton: '',
-      job_posting_to_pdf_link: '',
-      notes: [],
-      histories: [],
-      contacts: [],
-    };
-
-    let newApplications = [emptyApplication].concat(this.state.applications);
+    let newApplications = [generateEmptyApplicaton()].concat(this.state.applications);
     this.setState({ applications: newApplications });
   }
 
-  updateEmptyApplicationToDB() {
-    axios.get('/api/applications')
-      .then((applicationData) => {
-        console.log('Applications from database:', applicationData.data);
-
-        this.setState({ applications });
+  postEmptyApplicationToDB() {
+    axios.post('/user', {
+      firstName: 'Fred',
+      lastName: 'Flintstone'
+    })
+      .then(function (response) {
+        console.log(response);
       })
-      .catch((err) => {
-        console.log('err from api/applications');
-        console.log(err);
+      .catch(function (error) {
+        console.log(error);
       });
   }
 
@@ -65,7 +68,7 @@ export default class DrawerAndApplicationTable extends React.Component {
     const stageNameToColorHash = this.props.stageNameToColorHash || {};
     return (<div onClick={this.closeDrawer} >
 
-      <Button color="vk" onClick={this.handleAddButtonClick}>
+      <Button color="vk" className="addApplicationButton">
         <Icon name="plus" /> Add Aplication
       </Button>
 
@@ -75,7 +78,7 @@ export default class DrawerAndApplicationTable extends React.Component {
           isDrawerOpen={this.state.isDrawerOpen}
           handleAddButtonClick={this.handleAddButtonClick}
         />
-      </MuiThemeProvider> 
+      </MuiThemeProvider>
       <Segment style={segmentStyle}>
 
         <Table singleLine selectable>
