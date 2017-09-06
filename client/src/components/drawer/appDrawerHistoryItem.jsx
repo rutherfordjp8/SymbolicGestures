@@ -9,13 +9,7 @@ class AppDrawerHistoryItem extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          {this.props.application.histories.map((history, index) => {
-            return (
-              <p key={index}>{history.date + '    ' + history.event }</p>
-            );
-          })}
-        </div>
+        <p>{this.props.history.date + '    ' + this.props.history.event }</p>
       </div>
     );
   }
