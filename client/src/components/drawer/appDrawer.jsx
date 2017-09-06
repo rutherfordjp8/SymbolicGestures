@@ -8,7 +8,6 @@ class AppDrawer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-    // console.log(props.data)
   }
 
   render() {
