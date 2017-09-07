@@ -70,7 +70,7 @@ class App extends React.Component {
             backgroundColor: setting.backgroundColor,
             color: setting.textColor,
           };
-          this.setState({ stages_settings });
+          this.setState({stagesSettings: stagesSettings});
         });
 
         // console.log('stageNameToColorHash:', stageNameToColorHash);
