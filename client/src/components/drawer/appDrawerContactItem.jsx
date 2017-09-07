@@ -2,8 +2,13 @@ import React from 'react';
 
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
-import { List } from 'semantic-ui-react'
 import Paper from 'material-ui/Paper';
+import IconMenu from 'material-ui/IconMenu';
+import MenuItem from 'material-ui/MenuItem';
+import IconButton from 'material-ui/IconButton';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+
+import { List } from 'semantic-ui-react'
 
 const stylePaper = {
   height: 100,
@@ -13,6 +18,11 @@ const stylePaper = {
   textAlign: 'center',
   display: 'inline-block',
 };
+
+const iconIconMenu ={
+  float: 'right',
+  display: 'inline'
+}
 
 const style = {
   marginRight: 20,
@@ -25,10 +35,8 @@ class AppDrawerContactItem extends React.Component {
     this.handleDeleteContact = this.handleDeleteContact.bind(this);
   }
 
-
-
   handleDeleteContact(id) {
-   console.log('delete the contact with this id:' , id)
+   console.log('delete the contact with this id:' , this.props.contact.id)
   }
 
   render() {
@@ -57,6 +65,17 @@ class AppDrawerContactItem extends React.Component {
                       <List.Content>{this.props.contact.phone}</List.Content>
                     </List.Item>
                   </List>
+                  <div>
+                    <IconMenu
+                      style={iconIconMenu}
+                      iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+                      anchorOrigin={{horizontal: 'left', vertical: 'top'}}
+                      targetOrigin={{horizontal: 'left', vertical: 'top'}}
+                    >
+                      <MenuItem primaryText="Edit" />
+                      <MenuItem primaryText="Delete" onClick={this.handleDeleteContact}/>
+                    </IconMenu>
+                  </div>
                 </div>
               }
             />

@@ -30,7 +30,13 @@ class AppDrawerContact extends React.Component {
   };
 
 //close the dialog box, erases existing value in the fields
-  handleClose() {
+  handleClose(data) {
+    let newContact = {
+      name: this.state.name,
+      email: this.state.email,
+      role: this.state.role,
+      phone: this.state.phone,
+    }
     this.setState({open: false});
     this.setState({
       name: '',
