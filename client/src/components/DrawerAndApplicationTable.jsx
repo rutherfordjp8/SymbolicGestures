@@ -6,25 +6,7 @@ import { format } from 'date-fns';
 
 import MateUiRightDrawer from './MateUiRightDrawer.jsx';
 
-const generateEmptyApplicaton = () => {
-  let currentDate = format(new Date(), 'YYYY-MM-DD-ddd-HH-MM-ss');
-  let emptyApplication = {
-    created_at: currentDate,
-    company_name: '',
-    job_title: '',
-    stage: '',
-    job_posting_link: '',
-    job_posting_source: '',
-    applied_at: '',
-    updated_at: '',
-    locaton: '',
-    job_posting_to_pdf_link: '',
-    notes: [],
-    histories: [],
-    contacts: [],
-  };
-  return emptyApplication;
-};
+
 
 export default class DrawerAndApplicationTable extends React.Component {
   constructor(props) {
@@ -49,29 +31,12 @@ export default class DrawerAndApplicationTable extends React.Component {
     this.setState({ applications: newApplications });
   }
 
-  postEmptyApplicationToDB() {
-    axios.post('/user', {
-      firstName: 'Fred',
-      lastName: 'Flintstone'
-    })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-
   render() {
     const segmentStyle = { padding: 0 };
     const applications = this.props.applications || [];
     const stageNameToColorHash = this.props.stageNameToColorHash || {};
     return (<div onClick={this.closeDrawer} >
-      {/* #00bcd4 */}
-      {/* <Button color="vk" className="addApplicationButton" style={{ backgroundColor: '#00bcd4' }}> */}
-      <Button color="vk" className="addApplicationButton">
-        <Icon name="plus" /> Add Aplication
-      </Button>
+
 
       <MuiThemeProvider>
         <MateUiRightDrawer
