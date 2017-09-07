@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import { format, parse, getTime } from 'date-fns';
+import { parse, getTime, format } from 'date-fns';
 
 import Navbar from './components/Header/Navbar.jsx';
 import StageBar from './components/stageBar/StageBar.jsx';
@@ -47,17 +47,6 @@ class App extends React.Component {
     this.getApplications = this.getApplications.bind(this);
     this.toggleNavBar = this.toggleNavBar.bind(this);
   }
-  toggleNavBar(scrollDirection) {
-    if(this.state.navBarIsHidden && scrollDirection < 0) {
-      this.setState({
-        navBarIsHidden: !this.state.navBarIsHidden
-      });
-    } else if (!this.state.navBarIsHidden && scrollDirection > 0){
-      this.setState({
-        navBarIsHidden: !this.state.navBarIsHidden
-      });
-    }
-  }
 
   componentDidMount() {
     this.getApplications();
@@ -81,7 +70,7 @@ class App extends React.Component {
             backgroundColor: setting.backgroundColor,
             color: setting.textColor,
           };
-          this.setState({ stagesSettings });
+          this.setState({stagesSettings: stagesSettings});
         });
 
         console.log('stageNameToColorHash:', stageNameToColorHash);
@@ -92,13 +81,6 @@ class App extends React.Component {
         axios.get('/api/applications')
           .then((applicationData) => {
             console.log('Applications from database:', applicationData.data);
-            // currentDate = format(new Date(), 'YYYY-MM-DD-ddd-HH-MM-ss');
-            applicationData.data.forEach((application) => {
-              let date = application.applied_at;
-              let parseDate = parse(date);
-              let milliSecTime = getTime(parseDate);
-            });
-            // parse
             this.setState({ applications: applicationData.data });
           })
           .catch((err) => {
@@ -112,18 +94,23 @@ class App extends React.Component {
       });
   }
 
+  toggleNavBar(scrollDirection) {
+    if (this.state.navBarIsHidden && scrollDirection < 0) {
+      this.setState({
+        navBarIsHidden: !this.state.navBarIsHidden
+      });
+    } else if (!this.state.navBarIsHidden && scrollDirection > 0) {
+      this.setState({
+        navBarIsHidden: !this.state.navBarIsHidden
+      });
+    }
+  }
+
   render() {
     return (
-<<<<<<< HEAD
-      <div onClick={this.closeDrawer} onWheel={event=>{this.toggleNavBar(event.deltaY)}}>
+      <div onWheel={event=>{this.toggleNavBar(event.deltaY)}}>
         <Navbar navBarIsHidden={this.state.navBarIsHidden}/>
         {/* <div className="box_94per_3perMg"> */}
-=======
-      <div>
-        <Navbar />
-
-
->>>>>>> Delete clickFunc in app.jsx:
         <div className={seanStyleBox.box_94per_3perMg}>
           <div className={seanStyleBox.PatrickStatusBar}>
             <StageBar
