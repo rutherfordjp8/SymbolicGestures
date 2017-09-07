@@ -46,6 +46,8 @@ class App extends React.Component {
     // };
     this.getApplicationsFromDB = this.getApplicationsFromDB.bind(this);
     this.toggleNavBar = this.toggleNavBar.bind(this);
+    this.countApplicationStages = this.countApplicationStages.bind(this);
+    this.addNewStage = this.addNewStage.bind(this);
   }
 
   componentDidMount() {
@@ -70,7 +72,7 @@ class App extends React.Component {
             backgroundColor: setting.backgroundColor,
             color: setting.textColor,
           };
-          this.setState({stagesSettings: stagesSettings});
+          this.setState({stages_settings: stages_settings});
         });
 
         // console.log('stageNameToColorHash:', stageNameToColorHash);
@@ -96,17 +98,53 @@ class App extends React.Component {
               return application;
             });
 
-            this.setState({ applications });
+            this.setState({ applications: applications }, this.countApplicationStages)
           })
           .catch((err) => {
-            // console.log('err from api/applications');
+            console.log('err from api/applications');
             // console.log(err);
           });
       })
       .catch((err) => {
-        // console.log('err from /api/preference');
+        console.log('err from /api/preference', err);
         // console.log(err);
       });
+  }
+
+  /**
+   * Counts how many applications each stage has for
+   * dynamic rendering of stage length.
+   * @todo: Set both count and size of flex-grow
+   */
+  countApplicationStages() {
+    let applications = this.state.applications,
+        count = {};
+    console.log('Counting: ', applications);
+    // Count number of each stage.
+    for (let i = 0; i < applications.length; i++) {
+      let stage = applications[i].stage;
+      if(count[stage] && count[stage] < 6) {
+        count[stage]++;
+      } else {
+        count[stage] = 1;
+      }
+    }
+    // Set count state after counting.
+    this.setState({
+      stagesCount: count
+    });
+  }
+
+  addNewStage() {
+    let newStage = [{
+      backgroundColor:"#FFC107",
+      name:"Applied",
+      textColor:"black"
+    }]
+
+    this.setState({
+      stages_settings: this.state.stages_settings.concat(newStage)
+    });
   }
 
   toggleNavBar(scrollDirection) {
@@ -132,6 +170,7 @@ class App extends React.Component {
               stages={this.state.stages_settings}
               stagesCount={this.state.stagesCount}
               applications={this.state.applications}
+              addNewStage={this.addNewStage}
             />
           </div>
         </div>
