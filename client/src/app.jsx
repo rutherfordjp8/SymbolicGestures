@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import { format } from 'date-fns';
+import { format, parse, getTime } from 'date-fns';
 
 import Navbar from './components/Header/Navbar.jsx';
 import StageBar from './components/stageBar/StageBar.jsx';
@@ -92,6 +92,14 @@ class App extends React.Component {
         axios.get('/api/applications')
           .then((applicationData) => {
             console.log('Applications from database:', applicationData.data);
+            // currentDate = format(new Date(), 'YYYY-MM-DD-ddd-HH-MM-ss');
+            applicationData.data.forEach((application) => {
+              let date = application.applied_at;
+              let parseDate = parse(date);
+              let milliSecTime = getTime(parseDate);
+              console.log(getTime(parseDate));
+            });
+            // parse
             this.setState({ applications: applicationData.data });
           })
           .catch((err) => {
