@@ -11,7 +11,7 @@ class AppDrawerNote extends React.Component {
   render() {
     return (
       <div>
-        <h2>AppDrawerNote</h2>
+        <h2>Notes</h2>
         {this.props.application.notes.map((note,index) => {
           return (
             <AppDrawerNoteItem note={note} key={index}/>

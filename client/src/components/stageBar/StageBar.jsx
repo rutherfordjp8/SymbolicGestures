@@ -27,7 +27,7 @@ class StageBar extends React.Component {
     let applications = this.props.applications,
         stages = this.props.stages,
         count = {};
-    console.log('Counting: ', applications);
+    // console.log('Counting: ', applications);
     // Count number of each stage.
     for (let i = 0; i < applications.length; i++) {
       let stage = applications[i].stage;

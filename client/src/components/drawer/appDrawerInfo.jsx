@@ -11,11 +11,23 @@ class AppDrawerInfo extends React.Component {
       stage: '',
     };
     this.handleChange = this.handleChange.bind(this)
+    this.handleBlur = this.handleBlur.bind(this)
   }
 
   handleChange(event) {
-   console.log('drawerinfo event target',event.target);
-   this.setState({});
+    var key = event.target.id;
+    var val = event.target.value;
+    var obj  = {};
+    obj[key] = val;
+    this.setState(obj);
+  }
+
+  handleBlur(event) {
+    var key = event.target.id;
+    var val = event.target.value;
+    var obj  = {};
+    obj[key] = val;
+    console.log('axios this:', this.props.application.id, obj)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -30,61 +42,70 @@ class AppDrawerInfo extends React.Component {
   render() {
     return (
       <div>
-        <h2>AppDrawerInfo</h2>
+        <h2>Application</h2>
 
         <TextField
+          onBlur={this.handleBlur}
           onChange={this.handleChange}
-          id="text-field-default"
-          value={this.state.company_name}
+          id="company_name"
+          value={this.state.company_name || ' '}
+          hintText={this.state.company_name || ' '}
         />
 
         <TextField
-          id="text-field-default"
-          value={this.state.created_at}
+          onBlur={this.handleBlur}
+          onChange={this.handleChange}
+          id="created_at"
+          value={this.state.created_at || ' '}
         />
 
         <TextField
-          id="text-field-default"
-          value={this.state.company_name}
+          onBlur={this.handleBlur}
+          onChange={this.handleChange}
+          id="job_title"
+          value={this.state.job_title || ' '}
         />
 
         <TextField
-          id="text-field-default"
-          value={this.state.job_title}
-        />
-
-        <TextField
-          id="text-field-default"
-          value={this.state.stage}
+          onBlur={this.handleBlur}
+          onChange={this.handleChange}
+          id="stage"
+          value={this.state.stage || ' '}
         />
 
         {/* <TextField
-          id="text-field-default"
+          onChange={this.handleChange}
+          id="job_posting_link"
           value={this.props.application.job_posting_link}
         />
 
         <TextField
-          id="text-field-default"
+          onChange={this.handleChange}
+          id="job_posting_source"
           value={this.props.application.job_posting_source}
         />
 
         <TextField
-          id="text-field-default"
+          onChange={this.handleChange}
+          id="applied_at"
           value={this.props.application.applied_at}
         />
 
         <TextField
-          id="text-field-default"
+          onChange={this.handleChange}
+          id="updated_at"
           value={this.props.application.updated_at}
         />
 
         <TextField
-          id="text-field-default"
+          onChange={this.handleChange}
+          id="locaton"
           value={this.props.application.locaton}
         />
 
         <TextField
-          id="text-field-default"
+          onChange={this.handleChange}
+          id="job_posting_to_pdf_link"
           value={this.props.application.job_posting_to_pdf_link}
         /> */}
 

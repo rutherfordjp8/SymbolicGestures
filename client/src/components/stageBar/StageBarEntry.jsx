@@ -12,7 +12,7 @@ const StageBarEntry = (props) => {
   return (
     <li style={style}
       onClick={props.handleOnClick}
-      onChange={console.log('change')}
+      // onChange={console.log('change')}
     >
       <div className={styles.settings}>
         <Icon link name='setting' onClick={()=>{console.log('HelloSettings')}}/>

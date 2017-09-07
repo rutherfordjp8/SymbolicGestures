@@ -73,24 +73,24 @@ class App extends React.Component {
           this.setState({ stages_settings });
         });
 
-        console.log('stageNameToColorHash:', stageNameToColorHash);
-        console.log('fakeStageNameToColorHash:', fakeStageNameToColorHash);
+        // console.log('stageNameToColorHash:', stageNameToColorHash);
+        // console.log('fakeStageNameToColorHash:', fakeStageNameToColorHash);
 
         this.setState({ userId, stageNameToColorHash });
 
         axios.get('/api/applications')
           .then((applicationData) => {
-            console.log('Applications from database:', applicationData.data);
+            // console.log('Applications from database:', applicationData.data);
             this.setState({ applications: applicationData.data });
           })
           .catch((err) => {
-            console.log('err from api/applications');
-            console.log(err);
+            // console.log('err from api/applications');
+            // console.log(err);
           });
       })
       .catch((err) => {
-        console.log('err from /api/preference');
-        console.log(err);
+        // console.log('err from /api/preference');
+        // console.log(err);
       });
   }
 

@@ -23,6 +23,7 @@ class AppDrawerContact extends React.Component {
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleOpen() {
@@ -46,6 +47,12 @@ class AppDrawerContact extends React.Component {
     })
   };
 
+  handleSubmit(event) {
+    console.log('axios this:', this.props.application.id ,{name: this.state.name})
+
+    this.handleClose(event);
+  }
+
 // handle input change for all 4 fields, get id from event and change corresponding state value
   handleChange(event) {
     var key = event.target.id;
@@ -68,13 +75,13 @@ class AppDrawerContact extends React.Component {
         label="Submit"
         primary={true}
         keyboardFocused={true}
-        onClick={this.handleClose}
+        onClick={this.handleSubmit}
       />,
     ];
 
     return (
       <div>
-        <h2>AppDrawerContact</h2>
+        <h2>Contacts</h2>
         <div>
           <RaisedButton label="Add Contact" onClick={this.handleOpen} primary={true}/>
           <Dialog

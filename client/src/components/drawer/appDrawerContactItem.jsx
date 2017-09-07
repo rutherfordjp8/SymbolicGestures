@@ -33,16 +33,20 @@ class AppDrawerContactItem extends React.Component {
     super(props);
     this.state = {};
     this.handleDeleteContact = this.handleDeleteContact.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
   }
 
-  handleDeleteContact(id) {
+  handleDeleteContact(event) {
    console.log('delete the contact with this id:' , this.props.contact.id)
+  }
+  handleEdit(event) {
+   console.log('edit the contact with this id:' , this.props.contact.id)
   }
 
   render() {
     return (
       <div>
-            <Paper style={stylePaper} zDepth={2}
+            <Paper style={stylePaper} zDepth={1}
               children={
                 <div>
                   <List>
@@ -72,7 +76,7 @@ class AppDrawerContactItem extends React.Component {
                       anchorOrigin={{horizontal: 'left', vertical: 'top'}}
                       targetOrigin={{horizontal: 'left', vertical: 'top'}}
                     >
-                      <MenuItem primaryText="Edit" />
+                      <MenuItem primaryText="Edit" onClick={this.handleEdit}/>
                       <MenuItem primaryText="Delete" onClick={this.handleDeleteContact}/>
                     </IconMenu>
                   </div>
