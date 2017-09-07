@@ -207,10 +207,10 @@ module.exports.createOrUpdateContact = (req, res) => {
   }
 };
 
-module.exports.getUserPreference = (req, res) => {
+module.exports.getUserProfile = (req, res) => {
   models.Profile.where({ id: req.user.id }).fetch()
-    .then(preference => {
-      res.status(200).send(preference);
+    .then(profile => {
+      res.status(200).send(profile);
     })
     .catch(err => {
       // This code indicates an outside service (the database) did not respond in time
@@ -218,9 +218,8 @@ module.exports.getUserPreference = (req, res) => {
     });
 };
 
-module.exports.updateUserSettings = (req, res) => {
+module.exports.updateUserProfile = (req, res) => {
   let profile = req.body;
-  console.log(req.body)
   models.Profile.where({ id: req.user.id }).fetch()
     .then(currentProfile => {
       return currentProfile.save({

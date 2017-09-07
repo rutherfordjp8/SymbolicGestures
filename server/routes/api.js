@@ -77,7 +77,7 @@ router.route('/contacts/:id')
  * @return {Array}          returns an array of all stage preferences of the user.
  */
 router.route('/profiles')
-  .get(ApplicationController.getUserPreference)
-  .post(ApplicationController.updateUserSettings);
+  .get(ApplicationController.getUserProfile)
+  .post(ApplicationController.updateUserProfile);
 
 module.exports = router;
