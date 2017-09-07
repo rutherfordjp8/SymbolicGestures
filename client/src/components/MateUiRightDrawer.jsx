@@ -73,7 +73,10 @@ export default class MateUiRightDrawer extends React.Component {
             onClick={this.closeDrawer}
           > Close Drawer <Icon name="right chevron" />
           </Button>
-          <AppDrawer application={this.props.application} />
+          <AppDrawer
+            application={this.props.application}
+            getApplicationsFromDB={this.props.getApplicationsFromDB}
+          />
         </Drawer>
       </div>
     );
