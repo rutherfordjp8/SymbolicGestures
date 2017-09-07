@@ -58,7 +58,7 @@ class App extends React.Component {
    * @async
    */
   getApplications() {
-    axios.get('/api/preference')
+    axios.get('/api/profiles')
       .then((userData) => {
         let stages_settings = userData.data.stages_settings;
         let userId = userData.data.id;
