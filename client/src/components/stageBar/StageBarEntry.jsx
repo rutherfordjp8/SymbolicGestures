@@ -7,7 +7,7 @@ const StageBarEntry = (props) => {
     'position': 'relative',
     'color': props.stage.textColor,
     'background': props.stage.backgroundColor,
-    'flex': `${props.stage.count}`
+    'flex': `${props.flexSize}`
   };
 
   let handleMouseOver = function(el) {
@@ -31,8 +31,7 @@ const StageBarEntry = (props) => {
     console.log('MO', el.target.parentNode.className.substring(0,8));
     if (el.target.parentNode.className.substring(0,8) === 'stageBar') {
       return;
-    }
-    if (el.target.firstChild.className.substring(0,8) === 'stageBar') {
+    } else  {
       // el.target.firstChild.firstChild.style.visibility = 'hidden';
     }
     // el.target.firstChild.firstChild.style.display = 'none';
@@ -51,12 +50,11 @@ const StageBarEntry = (props) => {
     >
       <div className={styles.settings}>
         <Icon
-
+          onClick={() => {props.openSettings(props.entryPosition)}}
           link name='setting'
-          onClick={()=>{console.log('HelloSettings')}}
         />
       </div>
-      {props.stage.count}<br/>{props.stage.name}
+      {props.count}<br/>{props.stage.name}
     </li>
   );
 };
