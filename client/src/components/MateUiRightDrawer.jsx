@@ -32,7 +32,7 @@ export default class MateUiRightDrawer extends React.Component {
     super(props);
     this.state = { open: false };
     this.setDrawerToOpen = this.setDrawerToOpen.bind(this);
-    this.openDrawer = this.openDrawer.bind(this);
+    this.openDrawerAndPostEmptyAppToDB = this.openDrawerAndPostEmptyAppToDB.bind(this);
     this.closeDrawer = this.closeDrawer.bind(this);
   }
 
@@ -40,33 +40,30 @@ export default class MateUiRightDrawer extends React.Component {
     this.setState({ open: true });
   }
 
-  // postEmptyApplicationToDB() {
-  //   axios.post('/api/applications', {
-  //     firstName: 'Fred',
-  //     lastName: 'Flintstone'
-  //   })
-  //     .then(function (response) {
-  //       console.log(response);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // }
+  postEmptyApplicationToDB() {
+    axios.post('/api/applications', generateEmptyApplicaton())
+      .then(function (response) {
+        console.log('post req empty application succeed');
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log('post req empty application failed');
+        console.log(error);
+      });
+  }
 
-  openDrawer() {
+  openDrawerAndPostEmptyAppToDB() {
+    this.postEmptyApplicationToDB();
     this.setState({ open: true });
   }
-
-  closeDrawer() {
-    this.setState({ open: false });
-  }
+  closeDrawer() { this.setState({ open: false }); }
 
   render() {
     return (
       <div>
         {/* #00bcd4 */}
         {/* <Button color="vk" style={{ backgroundColor: '#00bcd4' }}> */}
-        <Button color="vk" onClick={this.openDrawer} >
+        <Button color="vk" onClick={this.openDrawerAndPostEmptyAppToDB} >
           <Icon name="plus" /> Add Aplication
         </Button>
 
@@ -74,7 +71,8 @@ export default class MateUiRightDrawer extends React.Component {
           <Button
             attached="top"
             onClick={this.closeDrawer}
-          > Close Drawer <Icon name="right chevron" /> </Button>
+          > Close Drawer <Icon name="right chevron" />
+          </Button>
           <AppDrawer application={this.props.application} />
         </Drawer>
       </div>
