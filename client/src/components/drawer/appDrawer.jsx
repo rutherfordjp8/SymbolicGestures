@@ -14,7 +14,7 @@ class AppDrawer extends React.Component {
     return (
       <div className="JerryDrawer02">
         <h1>AppDrawer</h1>
-        <AppDrawerInfo application={this.props.application}/>
+        <AppDrawerInfo application={this.props.application} getApplicationsFromDB={this.props.getApplicationsFromDB}/>
         <AppDrawerNote application={this.props.application}/>
         <AppDrawerContact application={this.props.application}/>
         <AppDrawerHistory application={this.props.application}/>

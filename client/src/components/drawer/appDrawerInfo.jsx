@@ -1,6 +1,9 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
 
+import axios from 'axios';
+
+
 class AppDrawerInfo extends React.Component {
   constructor(props) {
     super(props);
@@ -23,11 +26,15 @@ class AppDrawerInfo extends React.Component {
   }
 
   handleBlur(event) {
-    var key = event.target.id;
-    var val = event.target.value;
-    var obj  = {};
-    obj[key] = val;
-    console.log('axios this:', this.props.application.id, obj)
+    let route = '/api/applications/' + this.props.application.id;
+    let key = event.target.id;
+    let val = event.target.value;
+    let body  = {};
+    body[key] = val;
+    axios.post(route,body)
+    .then(this.props.getApplicationsFromDB())
+    .then((message) => {console.log(message)})
+
   }
 
   componentWillReceiveProps(nextProps) {
@@ -49,7 +56,7 @@ class AppDrawerInfo extends React.Component {
           onChange={this.handleChange}
           id="company_name"
           value={this.state.company_name || ' '}
-          hintText={this.state.company_name || ' '}
+          floatingLabelText='company_name'
         />
 
         <TextField
@@ -57,6 +64,7 @@ class AppDrawerInfo extends React.Component {
           onChange={this.handleChange}
           id="created_at"
           value={this.state.created_at || ' '}
+          floatingLabelText='created_at'
         />
 
         <TextField
@@ -64,6 +72,7 @@ class AppDrawerInfo extends React.Component {
           onChange={this.handleChange}
           id="job_title"
           value={this.state.job_title || ' '}
+          floatingLabelText='job_title'
         />
 
         <TextField
@@ -71,6 +80,7 @@ class AppDrawerInfo extends React.Component {
           onChange={this.handleChange}
           id="stage"
           value={this.state.stage || ' '}
+          floatingLabelText='stage'
         />
 
         {/* <TextField
