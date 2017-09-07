@@ -105,34 +105,18 @@ class App extends React.Component {
       });
   }
 
-  closeDrawer(e) {
-    // console.log('className:', e.target.className);
-    // console.log('attribute:', e.target.attributes);
-    let isClassNameExist = (e, className) => {
-      return e.target.className.split(' ').indexOf(className) !== -1;
-    };
-
-    console.log('nodeName:', e.target.nodeName);
-    console.log('className:', e.target.className);
-    // console.log('className:', e.target.style);
-    console.log('parentNode:', e.target.parentNode.className);
-
-    if (e.target.nodeName === 'TD' || e.target.nodeName === 'TH') {
-      console.log('TD or TH do nothing');
-    } else if (isClassNameExist(e, 'addApplicationButton')) {
-      console.log('add application button do nothing');
-    } else if (e.target.parentNode.className === 'JerryDrawer') {
-      console.log('Jerry Drawer do nothing');
-    } else {
-      console.log('close drawer');
-    }
-  }
-
   render() {
     return (
+<<<<<<< HEAD
       <div onClick={this.closeDrawer} onWheel={event=>{this.toggleNavBar(event.deltaY)}}>
         <Navbar navBarIsHidden={this.state.navBarIsHidden}/>
         {/* <div className="box_94per_3perMg"> */}
+=======
+      <div>
+        <Navbar />
+
+
+>>>>>>> Delete clickFunc in app.jsx:
         <div className={seanStyleBox.box_94per_3perMg}>
           <div className={seanStyleBox.PatrickStatusBar}>
             <StageBar
