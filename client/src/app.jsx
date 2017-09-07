@@ -97,7 +97,6 @@ class App extends React.Component {
               let date = application.applied_at;
               let parseDate = parse(date);
               let milliSecTime = getTime(parseDate);
-              console.log(getTime(parseDate));
             });
             // parse
             this.setState({ applications: applicationData.data });
