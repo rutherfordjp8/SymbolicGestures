@@ -12,7 +12,7 @@ class AppDrawer extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="JerryDrawer02">
         <h1>AppDrawer</h1>
         <AppDrawerInfo application={this.props.application}/>
         <AppDrawerNote application={this.props.application}/>

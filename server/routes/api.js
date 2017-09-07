@@ -73,7 +73,7 @@ router.route('/contacts/:id')
 /**
  * With a GET - Returns user's stage preference.
  * With a POST - edits user's stage preference.
- * @param  {Object} reqBody post request body form is {stagesSettings: [{'name': Applied, 'backgroundColor':'#FFC107', textColor: 'black'}...]}
+ * @param  {Object} reqBody post request body form is {stages_settings: [{'name': Applied, 'backgroundColor':'#FFC107', textColor: 'black'}...]}
  * @return {Array}          returns an array of all stage preferences of the user.
  */
 router.route('/preference')
