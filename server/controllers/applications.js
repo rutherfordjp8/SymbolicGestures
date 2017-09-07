@@ -191,7 +191,7 @@ module.exports.createOrUpdateContact = (req, res) => {
       });
   } else {
     return models.Contact.forge({
-      application_id: applicant.id,
+      application_id: contact.application_id,
       role: contact.role,
       name: contact.name,
       email: contact.email,
@@ -207,10 +207,10 @@ module.exports.createOrUpdateContact = (req, res) => {
   }
 };
 
-module.exports.getUserPreference = (req, res) => {
+module.exports.getUserProfile = (req, res) => {
   models.Profile.where({ id: req.user.id }).fetch()
-    .then(preference => {
-      res.status(200).send(preference);
+    .then(profile => {
+      res.status(200).send(profile);
     })
     .catch(err => {
       // This code indicates an outside service (the database) did not respond in time
@@ -218,16 +218,21 @@ module.exports.getUserPreference = (req, res) => {
     });
 };
 
-module.exports.updateUserPreference = (req, res) => {
+module.exports.updateUserProfile = (req, res) => {
+  let profile = req.body;
   models.Profile.where({ id: req.user.id }).fetch()
-    .then(preference => {
-      return preference.save({
-        stages_settings: req.body.stages_settings
+    .then(currentProfile => {
+      return currentProfile.save({
+        first: profile.first,
+        last: profile.last,
+        display: profile.display,
+        email: profile.email,
+        phone: profile.phone,
+        stages_settings: JSON.stringify(profile.stages_settings)
       });
     })
-    .save()
     .then(() => {
-      res.status(200).send('Stages preference successfully created/updated!');
+      res.status(200).send('Profile successfully updated!');
     })
     .catch(err => {
       res.status(503).send(err);

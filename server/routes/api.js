@@ -76,8 +76,8 @@ router.route('/contacts/:id')
  * @param  {Object} reqBody post request body form is {stages_settings: [{'name': Applied, 'backgroundColor':'#FFC107', textColor: 'black'}...]}
  * @return {Array}          returns an array of all stage preferences of the user.
  */
-router.route('/preference')
-  .get(ApplicationController.getUserPreference)
-  .post(ApplicationController.updateUserPreference);
+router.route('/profiles')
+  .get(ApplicationController.getUserProfile)
+  .post(ApplicationController.updateUserProfile);
 
 module.exports = router;
