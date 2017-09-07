@@ -67,7 +67,8 @@ export default class DrawerAndApplicationTable extends React.Component {
     const applications = this.props.applications || [];
     const stageNameToColorHash = this.props.stageNameToColorHash || {};
     return (<div onClick={this.closeDrawer} >
-
+      {/* #00bcd4 */}
+      {/* <Button color="vk" className="addApplicationButton" style={{ backgroundColor: '#00bcd4' }}> */}
       <Button color="vk" className="addApplicationButton">
         <Icon name="plus" /> Add Aplication
       </Button>
