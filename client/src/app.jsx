@@ -108,8 +108,8 @@ class App extends React.Component {
 
   render() {
     return (
-      <div onWheel={event=>{this.toggleNavBar(event.deltaY)}}>
-        <Navbar navBarIsHidden={this.state.navBarIsHidden}/>
+      <div onWheel={(event) => { this.toggleNavBar(event.deltaY); }}>
+        <Navbar navBarIsHidden={this.state.navBarIsHidden} />
         {/* <div className="box_94per_3perMg"> */}
         <div className={seanStyleBox.box_94per_3perMg}>
           <div className={seanStyleBox.PatrickStatusBar}>
