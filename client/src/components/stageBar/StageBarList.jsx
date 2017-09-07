@@ -9,14 +9,20 @@ const StageBarList = (props) => {
     <div className={styles.stageBar}>
       <ul className={styles.arrows}>
         {props.stages.map((stage, key) => {
-          stage['count'] = props.stagesCount[stage.name] || 1;
+          let stageCount = props.stagesCount[stage.name] || 0,
+              flexSize = stageCount > 3 ? 3 : stageCount;
+          if (stageCount < 1) {flexSize = 1};
+
           return <StageBarEntry
                   stage={stage}
+                  count={stageCount}
+                  flexSize={flexSize}
                   key={key}
                   entryPosition={key}
+                  openSettings={props.openSettings}
                 />;
         })}
-        <li className={styles.addStage} onClick={props.onClickAddStage}>
+        <li className={styles.addStage} onClick={props.addNewStage}>
           Add Stage<br/>+
         </li>
       </ul>
