@@ -222,7 +222,7 @@ module.exports.updateUserPreference = (req, res) => {
   models.Profile.where({ id: req.user.id }).fetch()
     .then(preference => {
       return preference.save({
-        stages_settings: req.body.stagesSettings
+        stages_settings: req.body.stages_settings
       });
     })
     .save()
