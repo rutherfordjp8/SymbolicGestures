@@ -48,7 +48,7 @@ class StageBar extends React.Component {
       <div className={styles.stageBar}>
         <StageBarList
           stages={this.props.stages}
-          stagesCount={this.props.stagesCount}
+          stagesCount={this.state.stagesCount}
         />
       </div>
     )

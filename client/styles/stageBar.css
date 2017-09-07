@@ -1,4 +1,5 @@
 .stageBar {
+
 }
 
 .stageBar ul {
@@ -34,4 +35,9 @@
 .settings {
   color: white;
   position: absolute;
+  visibility:hidden;
+}
+
+.settings i{
+  visibility: hidden;
 }
