@@ -42,3 +42,13 @@
 .settings i{
   visibility: hidden;
 }
+
+.settingsColorPickers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.settingsDelete {
+  color: red;
+}

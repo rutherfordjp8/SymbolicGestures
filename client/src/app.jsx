@@ -47,7 +47,8 @@ class App extends React.Component {
     this.getApplicationsFromDB = this.getApplicationsFromDB.bind(this);
     this.toggleNavBar = this.toggleNavBar.bind(this);
     this.countApplicationStages = this.countApplicationStages.bind(this);
-    this.addNewStage = this.addNewStage.bind(this);
+    this.onStagesChange = this.onStagesChange.bind(this);
+    this.updateStages = this.updateStages.bind(this);
   }
 
   componentDidMount() {
@@ -138,16 +139,27 @@ class App extends React.Component {
     });
   }
 
-  addNewStage() {
-    let newStage = [{
-      backgroundColor:"#FFC107",
-      name:"Applied",
-      textColor:"black"
-    }]
-
+  /**
+   * Function passed down and ran anytime a change to stages_settings occurs
+   * @param  {array} stages Array of Stages containing settings for each.
+   * @todo Create send to database function, then send after state is set.
+   */
+  onStagesChange(stages) {
     this.setState({
-      stages_settings: this.state.stages_settings.concat(newStage)
-    });
+      stages_settings: stages
+    }, this.updateStages)
+  }
+
+  updateStages() {
+    axios.post('/api/profiles', {'stages_settings': this.state.stages_settings})
+      .then(function (response) {
+        console.log('post req stage succeed');
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log('post req empty application failed');
+        console.log(error);
+      });
   }
 
   toggleNavBar(scrollDirection) {
@@ -173,7 +185,7 @@ class App extends React.Component {
               stages={this.state.stages_settings}
               stagesCount={this.state.stagesCount}
               applications={this.state.applications}
-              addNewStage={this.addNewStage}
+              onStagesChange={this.onStagesChange}
             />
           </div>
         </div>
