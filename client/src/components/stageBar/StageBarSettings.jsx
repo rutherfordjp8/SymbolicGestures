@@ -7,8 +7,17 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import ColorPicker from 'material-ui-color-picker'
 import TextField from 'material-ui/TextField';
 
+import styles from '../../../styles/stageBar.css';
+
 const StageBarSettings = (props) => {
   const actions = [
+    <FlatButton
+      label="Delete"
+      style={{'float': 'left','color': 'red'}}
+      primary={true}
+      keyboardFocused={true}
+      onClick={props.deleteStage}
+    />,
     <FlatButton
       label="Cancel"
       primary={true}
@@ -20,6 +29,7 @@ const StageBarSettings = (props) => {
       keyboardFocused={true}
       onClick={props.close}
     />,
+
   ];
 
   return (
@@ -38,7 +48,7 @@ const StageBarSettings = (props) => {
             onChange={props.handleChange}
             floatingLabelText="Name"
           />
-        <div>
+        <div className={styles.settingsColorPickers}>
           <ColorPicker
             defaultValue={props.activeStage.stage.backgroundColor}
             onChange={props.handleChange}

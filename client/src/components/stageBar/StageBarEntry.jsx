@@ -28,12 +28,12 @@ const StageBarEntry = (props) => {
     // el.target.style.flex = style.flex + 1;
   }
   let handleMouseOut = function(el) {
-    console.log('MO', el.target.parentNode.className.substring(0,8));
-    if (el.target.parentNode.className.substring(0,8) === 'stageBar') {
-      return;
-    } else  {
+    // console.log('MO', el.target.parentNode.className.substring(0,8));
+    // if (el.target.parentNode.className.substring(0,8) === 'stageBar') {
+    //   return;
+    // } else  {
       // el.target.firstChild.firstChild.style.visibility = 'hidden';
-    }
+    // }
     // el.target.firstChild.firstChild.style.display = 'none';
     // el.target.style.width = 'initial';
 
