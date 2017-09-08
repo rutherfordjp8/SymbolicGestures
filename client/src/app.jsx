@@ -69,7 +69,7 @@ class App extends React.Component {
       .then((userData) => {
         let stages_settings = userData.data.stages_settings;
         let userId = userData.data.id;
-        console.log('stages_settings from database:', stages_settings);
+        // console.log('stages_settings from database:', stages_settings);
 
         let stageNameToColorHash = {};
         stages_settings.forEach((setting) => {
@@ -87,7 +87,7 @@ class App extends React.Component {
 
         axios.get('/api/applications')
           .then((applicationData) => {
-            console.log('Applications from database:', applicationData.data);
+            // console.log('Applications from database:', applicationData.data);
 
             let strDateToMiliSec = (strDate) => {
               return getTime(parse(strDate));
