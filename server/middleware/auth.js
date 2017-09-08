@@ -1,7 +1,7 @@
 const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
-const redisClient = require('redis').createClient();
 const redisConfig = require('config')['redis'];
+const redisClient = require('redis').createClient(redisConfig.url);
 module.exports.verify = (req, res, next) => {
   if (req.isAuthenticated()) {
     return next();
