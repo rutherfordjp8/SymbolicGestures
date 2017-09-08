@@ -2,7 +2,7 @@
   "name": "SymbolicGestures",
   "scripts": {},
   "env": {
-    "callbackURL": {
+    "FACEBOOK_CALLBACK_URL": {
       "required": true
     },
     "FACEBOOK_CLIENT_ID": {
@@ -30,6 +30,15 @@
       "required": true
     },
     "TWITTER_CLIENT_SECRET": {
+      "required": true
+    },
+    "REDIS_SECRET": {
+      "required": true
+    },
+    "PGSSLMODE": {
+      "required": true
+    },
+    "DATABASE_URL": {
       "required": true
     }
   },
