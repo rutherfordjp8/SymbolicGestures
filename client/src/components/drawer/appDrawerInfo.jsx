@@ -34,10 +34,10 @@ class AppDrawerInfo extends React.Component {
     axios.post(route,body)
     .then(this.props.getApplicationsFromDB())
     .then((message) => {console.log(message)})
-
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log('componentWillReceiveProps: ',nextProps.application.company_name)
     this.setState({
       company_name: nextProps.application.company_name,
       created_at: nextProps.application.created_at,
