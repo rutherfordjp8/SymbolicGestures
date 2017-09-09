@@ -28,7 +28,7 @@ class AppDrawerInfo extends React.Component {
   }
 
   handleBlur(event) {
-    let route = '/api/applications/' + this.props.application.id;
+    let route = `/api/applications/${this.props.application.id}`;
     let key = event.target.id;
     let val = event.target.value;
     let body  = {};
@@ -39,7 +39,7 @@ class AppDrawerInfo extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('next props: ',nextProps.application.company_name)
+    // console.log('next props: ',nextProps.application.company_name)
 
     this.setState({
       company_name: nextProps.application.company_name,

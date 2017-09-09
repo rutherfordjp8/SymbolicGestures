@@ -7,6 +7,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import DatePicker from 'material-ui/DatePicker';
 import TextField from 'material-ui/TextField';
 
+import axios from 'axios';
 
 class AppDrawerContact extends React.Component {
   constructor(props) {
@@ -30,16 +31,14 @@ class AppDrawerContact extends React.Component {
     this.setState({open: true});
   };
 
-//close the dialog box, erases existing value in the fields
+/**
+ * [ close the dialog box, erases existing value in the fields]
+ * @param  {[type]} data [description]
+ * @return {[type]}      [description]
+ */
   handleClose(data) {
-    let newContact = {
-      name: this.state.name,
-      email: this.state.email,
-      role: this.state.role,
-      phone: this.state.phone,
-    }
-    this.setState({open: false});
     this.setState({
+      open: false,
       name: '',
       email: '',
       role: '',
@@ -48,7 +47,20 @@ class AppDrawerContact extends React.Component {
   };
 
   handleSubmit(event) {
-    console.log('axios this:', this.props.application.id ,{name: this.state.name})
+    // console.log('axios this:', this.props.application.id ,{name: this.state.name})
+
+    let newContact = {
+      application_id: this.props.application.id,
+      name: this.state.name,
+      email: this.state.email,
+      role: this.state.role,
+      phone: this.state.phone,
+    }
+
+    let route = '/api/contacts/';
+
+    axios.post(route,newContact)
+    .then(this.props.getApplicationsFromDB());
 
     this.handleClose(event);
   }

@@ -83,7 +83,7 @@ class StageBar extends React.Component {
   }
 
   handleChange(event) {
-    console.log(typeof event);
+    // console.log(typeof event);
     let currentStages = this.props.stages,
         activeStage = this.state.activeStage,
         index = this.state.activeStage.index;
@@ -94,7 +94,7 @@ class StageBar extends React.Component {
     } else {
       activeStage.stage.backgroundColor = event;
     }
-    console.log(activeStage);
+    // console.log(activeStage);
     this.setState({activeStage: activeStage}, () => {
       currentStages[index] = activeStage.stage;
       // let newStage = [activeStage.stage];

@@ -44,7 +44,7 @@ const StageBarEntry = (props) => {
   return (
     <li style={style}
       onClick={props.handleOnClick}
-      onChange={console.log('change')}
+      // onChange={console.log('change')}
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
     >
