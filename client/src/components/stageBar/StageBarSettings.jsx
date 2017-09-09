@@ -21,13 +21,13 @@ const StageBarSettings = (props) => {
     <FlatButton
       label="Cancel"
       primary={true}
-      onClick={props.close}
+      onClick={props.cancelStage}
     />,
     <FlatButton
       label="Submit"
       primary={true}
       keyboardFocused={true}
-      onClick={props.close}
+      onClick={props.submitStage}
     />,
 
   ];
@@ -40,18 +40,18 @@ const StageBarSettings = (props) => {
           actions={actions}
           modal={false}
           open={props.open}
-          onRequestClose={props.close}
+          onRequestClose={props.cancelStage}
           >
           <TextField
             id="Name"
             value={props.activeStage.stage.name}
-            onChange={props.handleChange}
+            onChange={props.handleNameChange}
             floatingLabelText="Name"
           />
         <div className={styles.settingsColorPickers}>
           <ColorPicker
             defaultValue={props.activeStage.stage.backgroundColor}
-            onChange={props.handleChange}
+            onChange={props.handleBackgroundColorChange}
             floatingLabelText="Background Color"
             />
 
