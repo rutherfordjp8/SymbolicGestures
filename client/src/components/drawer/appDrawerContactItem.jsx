@@ -16,12 +16,13 @@ const stylePaper = {
   margin: 5,
   padding: 10,
   textAlign: 'center',
-  display: 'inline-block',
+  display: 'flex',
 };
 
 const iconIconMenu ={
   float: 'right',
-  display: 'inline'
+  display: 'inline',
+  position: 'absolute'
 }
 
 const style = {
@@ -49,7 +50,19 @@ class AppDrawerContactItem extends React.Component {
             <Paper style={stylePaper} zDepth={1}
               children={
                 <div>
+
                   <List>
+                    <div style={iconIconMenu}>
+                      <IconMenu
+
+                        iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+                        anchorOrigin={{horizontal: 'left', vertical: 'top'}}
+                        targetOrigin={{horizontal: 'left', vertical: 'top'}}
+                        >
+                          <MenuItem primaryText="Edit" onClick={this.handleEdit}/>
+                          <MenuItem primaryText="Delete" onClick={this.handleDeleteContact}/>
+                        </IconMenu>
+                      </div>
                     <List.Item>
                       <List.Icon name='user circle' />
                       <List.Content>{this.props.contact.name}</List.Content>
@@ -69,17 +82,7 @@ class AppDrawerContactItem extends React.Component {
                       <List.Content>{this.props.contact.phone}</List.Content>
                     </List.Item>
                   </List>
-                  <div>
-                    <IconMenu
-                      style={iconIconMenu}
-                      iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
-                      anchorOrigin={{horizontal: 'left', vertical: 'top'}}
-                      targetOrigin={{horizontal: 'left', vertical: 'top'}}
-                    >
-                      <MenuItem primaryText="Edit" onClick={this.handleEdit}/>
-                      <MenuItem primaryText="Delete" onClick={this.handleDeleteContact}/>
-                    </IconMenu>
-                  </div>
+
                 </div>
               }
             />
