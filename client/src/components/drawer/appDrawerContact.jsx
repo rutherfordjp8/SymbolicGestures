@@ -25,6 +25,7 @@ class AppDrawerContact extends React.Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.createHistoryEntry = this.createHistoryEntry.bind(this);
   }
 
   handleOpen() {
@@ -62,7 +63,22 @@ class AppDrawerContact extends React.Component {
     axios.post(route,newContact)
     .then(this.props.getApplicationsFromDB());
 
+    this.createHistoryEntry(event)
+
     this.handleClose(event);
+  }
+
+  createHistoryEntry(event) {
+    let eventText = "created a contact : " + this.state.name;
+    let route = '/api/histories/';
+    let application_id = this.props.application.id;
+
+    let body = {'event' : eventText, application_id};
+    console.log(' new history: ', application_id, eventText)
+
+    axios.post(route,body)
+    .then((msg) => console.log(msg))
+    .then(this.props.getApplicationsFromDB());
   }
 
 // handle input change for all 4 fields, get id from event and change corresponding state value

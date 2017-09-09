@@ -95,7 +95,7 @@ module.exports.createOrUpdateNote = (req, res) => {
       });
   } else {
     return models.Note.forge({
-      application_id: applicant.id,
+      application_id: note.application_id,
       type: note.type,
       note: note.note
     })
@@ -143,7 +143,7 @@ module.exports.createOrUpdateHistory = (req, res) => {
   } else {
     //create
     return models.History.forge({
-      application_id: applicant.id,
+      application_id: history.application_id,
       event: history.event
     })
       .save()
@@ -175,7 +175,7 @@ module.exports.createOrUpdateContact = (req, res) => {
       .then(currentContact => {
         if (currentContact) {
           return currentContact.save({
-            application_id: applicant.id,
+            application_id: contact.application_id,
             role: contact.role,
             name: contact.name,
             email: contact.email,

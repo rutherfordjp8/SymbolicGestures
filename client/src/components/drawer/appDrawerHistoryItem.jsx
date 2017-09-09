@@ -9,7 +9,7 @@ class AppDrawerHistoryItem extends React.Component {
   render() {
     return (
       <div>
-        <p>{this.props.history.date + '    ' + this.props.history.event }</p>
+        <p>{this.props.history.created_at.slice(0,10) + ':    ' + this.props.history.event }</p>
       </div>
     );
   }
