@@ -156,18 +156,26 @@ class App extends React.Component {
   }
 
   /**
-   * Function passed down and ran anytime a change to stages_settings occurs
-   * @param  {array} stages Array of Stages containing settings for each.
+   * Function passed down and ran anytime a change to stages settings occurs,
+   * If second parameter(applications) is passed, update state of applications.
+   * @param  {array} stages Array of Stages containing settings for each different stage.
+   * @param  {array} applications Array of applications.
    * @todo Create send to database function, then send after state is set.
    */
-  onStagesChange(stages) {
+  onStagesChange(stages, applications) {
+    console.log('previous stages', this.state.stages_settings)
     this.setState({
-      stages_settings: stages
+      'stages_settings': stages
     }, () => {
+      console.log(this.state.stages_settings)
       this.updateStages();
-      this.stageNameToColorHash();
+      this.stageNameToColorHash(stages);
       this.countApplicationStages();
     });
+    console.log(!!applications);
+    if (applications !== undefined) {
+      this.setState({'applications': applications}, this.countApplicationStages);
+    }
   }
 
   /**
@@ -187,11 +195,11 @@ class App extends React.Component {
   }
 
   /**
-   * Updates to database the application passed in. If applications is passed it will set state of all applications.
+   * Updates to database the application passed in.
    * @param  {object} application A job application object
    * @async post to database
    */
-  updateApplications(application, applications) {
+  updateApplications(application) {
     axios.post(`/api/applications/${applications.id}`, application)
       .then(function (response) {
         console.log('post update application succeed');
@@ -201,11 +209,6 @@ class App extends React.Component {
         console.log('post update application failed');
         console.log(error);
       });
-
-    // Updates state of applications if applications is passed in.
-    if (applications) {
-      this.setState(applications);
-    }
   }
 
   /**
