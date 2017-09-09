@@ -9,9 +9,11 @@ class AppDrawerInfo extends React.Component {
     super(props);
     this.state = {
       company_name: '',
-      created_at: '',
+      applied_at: '',
       job_title: '',
       stage: '',
+      job_posting_source: '',
+      job_posting_link: ''
     };
     this.handleChange = this.handleChange.bind(this)
     this.handleBlur = this.handleBlur.bind(this)
@@ -38,12 +40,14 @@ class AppDrawerInfo extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     console.log('next props: ',nextProps.application.company_name)
-    
+
     this.setState({
       company_name: nextProps.application.company_name,
-      created_at: nextProps.application.created_at,
+      applied_at: nextProps.application.applied_at,
       job_title: nextProps.application.job_title,
       stage: nextProps.application.stage,
+      job_posting_source: nextProps.application.job_posting_source,
+      job_posting_link: nextProps.application.job_posting_link
     });
   }
 
@@ -56,23 +60,31 @@ class AppDrawerInfo extends React.Component {
           onBlur={this.handleBlur}
           onChange={this.handleChange}
           id="company_name"
-          value={this.state.company_name || ' '}
+          value={this.state.company_name || ''}
           floatingLabelText='company_name'
         />
+
+        {/* <TextField
+          onBlur={this.handleBlur}
+          onChange={this.handleChange}
+          id="created_at"
+          value={this.state.created_at || ''}
+          floatingLabelText='created_at'
+        /> */}
 
         <TextField
           onBlur={this.handleBlur}
           onChange={this.handleChange}
-          id="created_at"
-          value={this.state.created_at || ' '}
-          floatingLabelText='created_at'
+          id="applied_at"
+          value={this.state.applied_at || ''}
+          floatingLabelText='applied_at'
         />
 
         <TextField
           onBlur={this.handleBlur}
           onChange={this.handleChange}
           id="job_title"
-          value={this.state.job_title || ' '}
+          value={this.state.job_title || ''}
           floatingLabelText='job_title'
         />
 
@@ -80,8 +92,24 @@ class AppDrawerInfo extends React.Component {
           onBlur={this.handleBlur}
           onChange={this.handleChange}
           id="stage"
-          value={this.state.stage || ' '}
+          value={this.state.stage || ''}
           floatingLabelText='stage'
+        />
+
+        <TextField
+          onBlur={this.handleBlur}
+          onChange={this.handleChange}
+          id="job_posting_source"
+          value={this.state.job_posting_source || ''}
+          floatingLabelText='job_posting_source'
+        />
+
+        <TextField
+          onBlur={this.handleBlur}
+          onChange={this.handleChange}
+          id="job_posting_link"
+          value={this.state.job_posting_link || ''}
+          floatingLabelText='job_posting_link'
         />
 
         {/* <TextField
