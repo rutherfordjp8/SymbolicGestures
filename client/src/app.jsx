@@ -50,11 +50,13 @@ class App extends React.Component {
     //   fakeStageNameToColorHash,
     // };
     this.getApplicationsFromDB = this.getApplicationsFromDB.bind(this);
+    this.stageNameToColorHash = this.stageNameToColorHash.bind(this);
     this.toggleNavBar = this.toggleNavBar.bind(this);
     this.countApplicationStages = this.countApplicationStages.bind(this);
     this.onStagesChange = this.onStagesChange.bind(this);
     this.updateStages = this.updateStages.bind(this);
-    this.updateOneAppStage = this.updateOneAppStage.bind(this);
+    this.updateaOneAppStage = this.updateaOneAppStage.bind(this);
+    this.updateApplications = this.updateApplications.bind(this);
   }
 
   componentDidMount() {
@@ -73,19 +75,13 @@ class App extends React.Component {
         let stages_settings = userData.data.stages_settings;
         let userId = userData.data.id;
 
-        let stageNameToColorHash = {};
-        stages_settings.forEach((setting) => {
-          stageNameToColorHash[setting.name] = {
-            backgroundColor: setting.backgroundColor,
-            color: setting.textColor,
-          };
-          this.setState({stages_settings: stages_settings});
-        });
+        this.stageNameToColorHash(stages_settings);
+
+        this.setState({stages_settings, userId});
+
 
         // console.log('stageNameToColorHash:', stageNameToColorHash);
         // console.log('fakeStageNameToColorHash:', fakeStageNameToColorHash);
-
-        this.setState({ userId, stageNameToColorHash });
 
         axios.get('/api/applications')
           .then((applicationData) => {
@@ -122,14 +118,28 @@ class App extends React.Component {
   }
 
   /**
+   * Sets the state that each color on the table will get based on the stage name.
+   * @param  {array} stages_settings All the stages the current user has.
+   */
+  stageNameToColorHash(stages_settings) {
+    let stageNameToColorHash = {};
+    stages_settings.forEach((setting) => {
+      stageNameToColorHash[setting.name] = {
+        backgroundColor: setting.backgroundColor,
+        color: setting.textColor,
+      };
+    });
+    this.setState({stageNameToColorHash});
+  }
+
+  /**
    * Counts how many applications each stage has for
    * dynamic rendering of stage length.
    * @todo: Set both count and size of flex-grow
    */
   countApplicationStages() {
-    let applications = this.state.applications;
-    let count = {};
-    console.log('Counting: ', applications);
+    let applications = this.state.applications,
+        count = {};
     // Count number of each stage.
     for (let i = 0; i < applications.length; i++) {
       let stage = applications[i].stage;
@@ -153,9 +163,17 @@ class App extends React.Component {
   onStagesChange(stages) {
     this.setState({
       stages_settings: stages
-    }, this.updateStages)
+    }, () => {
+      this.updateStages();
+      this.stageNameToColorHash();
+      this.countApplicationStages();
+    });
   }
 
+  /**
+   * Updates to database the stages for current user.
+   * @async post to database
+   */
   updateStages() {
     axios.post('/api/profiles', {'stages_settings': this.state.stages_settings})
       .then(function (response) {
@@ -166,6 +184,28 @@ class App extends React.Component {
         console.log('post req empty application failed');
         console.log(error);
       });
+  }
+
+  /**
+   * Updates to database the application passed in. If applications is passed it will set state of all applications.
+   * @param  {object} application A job application object
+   * @async post to database
+   */
+  updateApplications(application, applications) {
+    axios.post(`/api/applications/${applications.id}`, application)
+      .then(function (response) {
+        console.log('post update application succeed');
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log('post update application failed');
+        console.log(error);
+      });
+
+    // Updates state of applications if applications is passed in.
+    if (applications) {
+      this.setState(applications);
+    }
   }
 
   /**
@@ -208,7 +248,9 @@ class App extends React.Component {
                       <StageBar
                         stages={this.state.stages_settings}
                         stagesCount={this.state.stagesCount}
+                        stageNameToColorHash={this.state.stageNameToColorHash}
                         applications={this.state.applications}
+                        updateApplications={this.updateApplications}
                         onStagesChange={this.onStagesChange}
                       />
                     </div>

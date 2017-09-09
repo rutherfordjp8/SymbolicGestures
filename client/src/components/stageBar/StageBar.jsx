@@ -4,7 +4,7 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';
-
+import _ from 'lodash';
 import StageBarList from './StageBarList.jsx';
 import StageBarSettings from './StageBarSettings.jsx';
 import styles from '../../../styles/stageBar.css';
@@ -21,45 +21,23 @@ class StageBar extends React.Component {
                       'backgroundColor': '#2196F3',
                       'textColor': '#000'},
                     'index': 0},
+      activeStageBackup: {'stage': {
+                      'name': undefined,
+                      'backgroundColor': '#2196F3',
+                      'textColor': '#000'},
+                    'index': 0},
     }
 
     //*******Function Bindings**********//
-    this.countApplicationStages = this.countApplicationStages.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleTextColorChange = this.handleTextColorChange.bind(this);
     this.addNewStage = this.addNewStage.bind(this);
     this.deleteStage = this.deleteStage.bind(this);
-  }
-
-  componentWillReceiveProps() {
-    this.countApplicationStages();
-  }
-
-  /**
-   * Counts how many applications each stage has for
-   * dynamic rendering of stage length.
-   * @todo: Set both count and size of flex-grow
-   */
-  countApplicationStages() {
-    let applications = this.props.applications,
-        stages = this.props.stages,
-        count = {};
-    // console.log('Counting: ', applications);
-    // Count number of each stage.
-    for (let i = 0; i < applications.length; i++) {
-      let stage = applications[i].stage;
-      if(count[stage] && count[stage] < 6) {
-        count[stage]++;
-      } else {
-        count[stage] = 1;
-      }
-    }
-    // Set count state after counting.
-    this.setState({
-      stagesCount: count
-    });
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleBackgroundColorChange = this.handleBackgroundColorChange.bind(this);
+    this.handleTextColorChange = this.handleTextColorChange.bind(this);
+    this.stageSettingsSubmit = this.stageSettingsSubmit.bind(this);
+    this.stageSettingsCancel = this.stageSettingsCancel.bind(this);
   }
 
   addNewStage() {
@@ -82,46 +60,75 @@ class StageBar extends React.Component {
     this.handleClose();
   }
 
-  handleChange(event) {
-    // console.log(typeof event);
+
+  handleNameChange(event) {
     let currentStages = this.props.stages,
         activeStage = this.state.activeStage,
         index = this.state.activeStage.index;
-    // console.log('currentStages', currentStages, this.props.stages)
-    if (typeof event !== 'string' && event.target.id === 'Name') {
-      activeStage.stage.name = event.target.value;
-      this.setState({activeStage: activeStage});
-    } else {
-      activeStage.stage.backgroundColor = event;
-    }
-    // console.log(activeStage);
-    this.setState({activeStage: activeStage}, () => {
-      currentStages[index] = activeStage.stage;
-      // let newStage = [activeStage.stage];
-      this.props.onStagesChange(currentStages);
-    })
+
+    activeStage.stage.name = event.target.value;
+    this.setState({activeStage: activeStage});
+  }
+
+  handleBackgroundColorChange(event) {
+    let currentStages = this.props.stages,
+        activeStage = this.state.activeStage,
+        index = this.state.activeStage.index;
+
+
+    activeStage.stage.backgroundColor = event;
+
+    this.setState({activeStage: activeStage});
   }
 
   handleTextColorChange(event) {
     let currentStages = this.props.stages,
         activeStage = this.state.activeStage,
         index = this.state.activeStage.index;
-    // console.log('currentStages', currentStages, this.props.stages)
+
 
     activeStage.stage.textColor = event;
 
     this.setState({activeStage: activeStage});
   }
 
-  handleOpen(index) {
-    this.setState({activeStage: {'stage': this.props.stages[index],
-      'index': index}})
-      this.setState({settingsOpen: true});
-    };
+  stageSettingsSubmit() {
+    let index = this.state.activeStage.index,
+        currentStages = this.props.stages;
+    currentStages[index] = this.state.activeStage.stage;
+    this.props.onStagesChange(currentStages);
+    this.setState({settingsOpen:false});
+  }
 
-    handleClose() {
-      this.setState({settingsOpen: false});
-    };
+  stageSettingsCancel() {
+    let index = this.state.activeStage.index,
+        currentStages = this.props.stages;
+    currentStages[index] = this.state.activeStageBackup.stage;
+
+
+    this.setState({activeStage: this.state.activeStageBackup});
+    this.setState({settingsOpen:false});
+  }
+
+  handleOpen(index) {
+    let currentStages = this.props.stages,
+        copyStages = _.cloneDeep(currentStages);
+    this.setState({
+      activeStage: {
+                    'stage': currentStages[index],
+                    'index': index
+                   },
+      activeStageBackup: {
+                          'stage': copyStages[index],
+                          'index': index
+                         },
+      settingsOpen: true
+    });
+  };
+
+  handleClose() {
+    this.setState({settingsOpen: false});
+  };
 
   render() {
     return (
@@ -136,15 +143,16 @@ class StageBar extends React.Component {
         open={this.state.settingsOpen}
         close={this.handleClose}
         activeStage={this.state.activeStage}
-        handleChange={this.handleChange}
+        handleNameChange={this.handleNameChange}
+        handleBackgroundColorChange={this.handleBackgroundColorChange}
         handleTextColorChange={this.handleTextColorChange}
+        submitStage={this.stageSettingsSubmit}
+        cancelStage={this.stageSettingsCancel}
         deleteStage={this.deleteStage}
       />
-
-
       </div>
-    )
-  }
+    );
+  };
 }
 
 
