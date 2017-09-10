@@ -85,7 +85,6 @@ class StageBar extends React.Component {
     activeStage.stage.name = event.target.value;
 
     this.setState({activeStage: activeStage});
-    this.props.updateaOneAppStage(index, activeStage.stage);
   }
 
   /**
@@ -100,7 +99,6 @@ class StageBar extends React.Component {
     activeStage.stage.backgroundColor = event;
 
     this.setState({activeStage: activeStage});
-    this.props.updateaOneAppStage(index, activeStage.stage);
   }
 
   /**
@@ -115,7 +113,6 @@ class StageBar extends React.Component {
     activeStage.stage.textColor = event;
 
     this.setState({activeStage: activeStage});
-    this.props.updateaOneAppStage(index, activeStage.stage);
   }
 
   /**
@@ -133,10 +130,11 @@ class StageBar extends React.Component {
     // iterate through applications and replace stage name with replacement.
     for (let i = 0; i < applications.length; i++) {
       if (applications[i].stage === initialStageName) {
-        applications[i].stage = newStageName;
+        // applications[i].stage = newStageName;
+        this.props.updateaOneAppStage(i, newStageName);
       };
     }
-    this.props.onStagesChange(currentStages, applications);
+    this.props.onStagesChange(currentStages);
     this.setState({settingsOpen:false});
   }
 
