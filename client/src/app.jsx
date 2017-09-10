@@ -140,19 +140,20 @@ class App extends React.Component {
   countApplicationStages() {
     let applications = this.state.applications,
         count = {};
+    console.log(this.state.applications)
     // Count number of each stage.
     for (let i = 0; i < applications.length; i++) {
       let stage = applications[i].stage;
-      if (count[stage] && count[stage] < 6) {
-        count[stage]++;
-      } else {
+      if (count[stage] === undefined) {
         count[stage] = 1;
+      } else {
+        count[stage]++;
       }
     }
     // Set count state after counting.
     this.setState({
       stagesCount: count
-    });
+    }, () => {console.log(this.state.stagesCount)});
   }
 
   /**
@@ -160,7 +161,6 @@ class App extends React.Component {
    * If second parameter(applications) is passed, update state of applications.
    * @param  {array} stages Array of Stages containing settings for each different stage.
    * @param  {array} applications Array of applications.
-   * @todo Create send to database function, then send after state is set.
    */
   onStagesChange(stages, applications) {
     console.log('previous stages', this.state.stages_settings)
@@ -174,6 +174,7 @@ class App extends React.Component {
     });
     console.log(!!applications);
     if (applications !== undefined) {
+      console.log(this.state.applications);
       this.setState({'applications': applications}, this.countApplicationStages);
     }
   }
@@ -227,11 +228,16 @@ class App extends React.Component {
     }
   }
 
-  updateOneAppStage(idx, updatedState) {
+  /**
+   * Updates the state when a applications stage changes and recounts applications.
+   * @param  {integer} idx  Index of the application needed to be updated
+   * @param  {string} updatedState The string the applications stage is set to.
+   */
+  updateaOneAppStage(idx, updatedState) {
     this.state.applications[idx].stage = updatedState;
     this.setState({
       applications: this.state.applications
-    });
+    }, this.countApplicationStages);
   }
 
   render() {
@@ -254,6 +260,7 @@ class App extends React.Component {
                         stageNameToColorHash={this.state.stageNameToColorHash}
                         applications={this.state.applications}
                         updateApplications={this.updateApplications}
+                        updateaOneAppStage={this.updateaOneAppStage}
                         onStagesChange={this.onStagesChange}
                       />
                     </div>
