@@ -32,13 +32,13 @@ class AppDrawerInfo extends React.Component {
     });
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    let stageChanged = prevProps.application.stage !== this.props.application.stage;
-    let idChanged = prevProps.application.id !== this.props.application.id;
-    if (stageChanged && !idChanged) {
-      this.createHistoryEntry(this.props.application.id, prevProps.application.stage, this.props.application.stage);
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   let stageChanged = prevProps.application.stage !== this.props.application.stage;
+  //   let idChanged = prevProps.application.id !== this.props.application.id;
+  //   if (stageChanged && !idChanged) {
+  //     this.createHistoryEntry(this.props.application.id, prevProps.application.stage, this.props.application.stage);
+  //   }
+  // }
 
   handleChange(event) {
     let key = event.target.id;
@@ -91,7 +91,8 @@ class AppDrawerInfo extends React.Component {
           floatingLabelText='created_at'
         /> */}
         {/* {console.log('application:', this.props.application)} */}
-        <AppDrawerInfoDropDown 
+        <AppDrawerInfoDropDown
+          getApplicationsFromDB={this.props.getApplicationsFromDB}
           application={this.props.application}
           stages_settings={this.props.stages_settings}
           stageNameToColorHash={this.props.stageNameToColorHash}
