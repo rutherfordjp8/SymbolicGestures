@@ -1,5 +1,5 @@
 import React from 'react';
-import AppDrawerNoteItem from './appDrawerNoteItem.jsx';
+import AppDrawerNoteItem from './AppDrawerNoteItem.jsx';
 
 class AppDrawerNote extends React.Component {
   constructor(props) {

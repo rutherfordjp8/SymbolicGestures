@@ -1,5 +1,5 @@
 import React from 'react';
-import AppDrawerContactItem from './appDrawerContactItem.jsx'
+import AppDrawerContactItem from './AppDrawerContactItem.jsx'
 
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';

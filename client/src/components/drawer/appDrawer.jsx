@@ -1,8 +1,8 @@
 import React from 'react';
-import AppDrawerInfo from './appDrawerInfo.jsx';
-import AppDrawerNote from './appDrawerNote.jsx';
-import AppDrawerHistory from './appDrawerHistory.jsx';
-import AppDrawerContact from './appDrawerContact.jsx';
+import AppDrawerInfo from './AppDrawerInfo.jsx';
+import AppDrawerNote from './AppDrawerNote.jsx';
+import AppDrawerHistory from './AppDrawerHistory.jsx';
+import AppDrawerContact from './AppDrawerContact.jsx';
 
 class AppDrawer extends React.Component {
   constructor(props) {

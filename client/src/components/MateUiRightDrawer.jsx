@@ -6,7 +6,7 @@ import axios from 'axios';
 import { format } from 'date-fns';
 
 
-import AppDrawer from './drawer/appDrawer.jsx';
+import AppDrawer from './drawer/AppDrawer.jsx';
 
 const seanStyleBox = require('./../../styles/seanStyleBox.css');
 
