@@ -69,15 +69,14 @@ class AppDrawerContact extends React.Component {
   }
 
   createHistoryEntry(event) {
-    let eventText = "created a contact : " + this.state.name;
+    let eventText = "Created a contact : " + this.state.name;
     let route = '/api/histories/';
     let application_id = this.props.application.id;
 
     let body = {'event' : eventText, application_id};
-    console.log(' new history: ', application_id, eventText)
+    // console.log(' new history: ', application_id, eventText)
 
     axios.post(route,body)
-    .then((msg) => console.log(msg))
     .then(this.props.getApplicationsFromDB());
   }
 

@@ -17,6 +17,7 @@ class AppDrawerInfo extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this)
     this.handleBlur = this.handleBlur.bind(this)
+    this.createHistoryEntry = this.createHistoryEntry.bind(this)
   }
 
   handleChange(event) {
@@ -37,6 +38,24 @@ class AppDrawerInfo extends React.Component {
     .then(this.props.getApplicationsFromDB())
     // .then((message) => {console.log(message)})
   }
+
+  componentDidUpdate(prevProps, prevState) {
+    var stageChanged = prevProps.application.stage !== this.props.application.stage;
+    var idChanged = prevProps.application.id !== this.props.application.id;
+    if (stageChanged && !idChanged) {
+      this.createHistoryEntry(this.props.application.id, prevProps.application.stage,this.props.application.stage)
+    }
+  }
+
+  createHistoryEntry(application_id, oldStage, newStage) {
+    let eventText = "Stage was changed from " + oldStage + " to " + newStage;
+    let route = '/api/histories/';
+    let body = {'event' : eventText, application_id};
+    // console.log(' new history: ', application_id, eventText)
+    axios.post(route,body)
+    .then(this.props.getApplicationsFromDB());
+  }
+
 
   componentWillReceiveProps(nextProps) {
     // console.log('next props: ',nextProps.application.company_name)
