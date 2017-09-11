@@ -55,7 +55,7 @@ class App extends React.Component {
     this.countApplicationStages = this.countApplicationStages.bind(this);
     this.onStagesChange = this.onStagesChange.bind(this);
     this.updateStages = this.updateStages.bind(this);
-    this.updateaOneAppStage = this.updateaOneAppStage.bind(this);
+    this.updateOneAppStage = this.updateOneAppStage.bind(this);
     this.updateApplications = this.updateApplications.bind(this);
   }
 
@@ -233,7 +233,7 @@ class App extends React.Component {
    * @param  {integer} idx  Index of the application needed to be updated
    * @param  {string} updatedState The string the applications stage is set to.
    */
-  updateaOneAppStage(idx, updatedState) {
+  updateOneAppStage(idx, updatedState) {
     this.state.applications[idx].stage = updatedState;
     this.setState({
       applications: this.state.applications
@@ -260,7 +260,7 @@ class App extends React.Component {
                         stageNameToColorHash={this.state.stageNameToColorHash}
                         applications={this.state.applications}
                         updateApplications={this.updateApplications}
-                        updateaOneAppStage={this.updateaOneAppStage}
+                        updateOneAppStage={this.updateOneAppStage}
                         onStagesChange={this.onStagesChange}
                       />
                     </div>

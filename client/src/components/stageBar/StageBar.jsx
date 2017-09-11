@@ -131,7 +131,7 @@ class StageBar extends React.Component {
     for (let i = 0; i < applications.length; i++) {
       if (applications[i].stage === initialStageName) {
         // applications[i].stage = newStageName;
-        this.props.updateaOneAppStage(i, newStageName);
+        this.props.updateOneAppStage(i, newStageName);
       };
     }
     this.props.onStagesChange(currentStages);
