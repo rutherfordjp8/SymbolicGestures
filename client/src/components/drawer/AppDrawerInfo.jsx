@@ -4,6 +4,7 @@ import TextField from 'material-ui/TextField';
 import axios from 'axios';
 
 import AppDrawerInfoDropDown from './AppDrawerInfoDropDown.jsx'
+import styles from '../../../styles/drawer.css'
 
 class AppDrawerInfo extends React.Component {
   constructor(props) {
@@ -72,26 +73,11 @@ class AppDrawerInfo extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Application</h2>
+      <div className={styles.application}>
+        <h1>Application</h1>
 
-        <TextField
-          onBlur={this.handleBlur}
-          onChange={this.handleChange}
-          id="company_name"
-          value={this.state.company_name || ''}
-          floatingLabelText='company_name'
-        />
-
-        {/* <TextField
-          onBlur={this.handleBlur}
-          onChange={this.handleChange}
-          id="created_at"
-          value={this.state.created_at || ''}
-          floatingLabelText='created_at'
-        /> */}
-        {/* {console.log('application:', this.props.application)} */}
         <AppDrawerInfoDropDown
+          className={styles.stageSelection}
           getApplicationsFromDB={this.props.getApplicationsFromDB}
           application={this.props.application}
           stages_settings={this.props.stages_settings}
@@ -99,84 +85,92 @@ class AppDrawerInfo extends React.Component {
           stage={this.props.application.stage}
           updateOneAppStage={this.props.updateOneAppStage}
           selectAppIdx={this.props.selectAppIdx}
-        />
+          />
+        <div className={styles.applicationInfo}>
+          <div className={styles.appInfo_col_1}>
+            <TextField
+              onBlur={this.handleBlur}
+              onChange={this.handleChange}
+              id="applied_at"
+              value={this.state.applied_at || ''}
+              floatingLabelText='applied_at'
+            />
+            <TextField
+              onBlur={this.handleBlur}
+              onChange={this.handleChange}
+              id="company_name"
+              value={this.state.company_name || ''}
+              floatingLabelText='company_name'
+            />
+            <TextField
+              onBlur={this.handleBlur}
+              onChange={this.handleChange}
+              id="job_title"
+              value={this.state.job_title || ''}
+              floatingLabelText='job_title'
+            />
+          </div>
 
-        <TextField
-          onBlur={this.handleBlur}
-          onChange={this.handleChange}
-          id="applied_at"
-          value={this.state.applied_at || ''}
-          floatingLabelText='applied_at'
-        />
 
-        <TextField
-          onBlur={this.handleBlur}
-          onChange={this.handleChange}
-          id="job_title"
-          value={this.state.job_title || ''}
-          floatingLabelText='job_title'
-        />
+          {/* <TextField
+            onBlur={this.handleBlur}
+            onChange={this.handleChange}
+            id="created_at"
+            value={this.state.created_at || ''}
+            floatingLabelText='created_at'
+            /> */}
 
-        {/* <TextField
-          onBlur={this.handleBlur}
-          onChange={this.handleChange}
-          id="stage"
-          value={this.state.stage || ''}
-          floatingLabelText='stage'
-        /> */}
+            {/* {console.log('application:', this.props.application)} */}
 
-        <TextField
-          onBlur={this.handleBlur}
-          onChange={this.handleChange}
-          id="job_posting_source"
-          value={this.state.job_posting_source || ''}
-          floatingLabelText='job_posting_source'
-        />
+            <div className={styles.appInfo_col_2}>
+              <TextField
+                onBlur={this.handleBlur}
+                onChange={this.handleChange}
+                id="job_posting_source"
+                value={this.state.job_posting_source || ''}
+                floatingLabelText='job_posting_source'
+                />
+              <TextField
+                onBlur={this.handleBlur}
+                onChange={this.handleChange}
+                id="job_posting_link"
+                value={this.state.job_posting_link || ''}
+                floatingLabelText='job_posting_link'
+                />
+            </div>
+            {/* <TextField
+              onBlur={this.handleBlur}
+              onChange={this.handleChange}
+              id="stage"
+              value={this.state.stage || ''}
+              floatingLabelText='stage'
+              /> */}
 
-        <TextField
-          onBlur={this.handleBlur}
-          onChange={this.handleChange}
-          id="job_posting_link"
-          value={this.state.job_posting_link || ''}
-          floatingLabelText='job_posting_link'
-        />
+            {/*
+              <TextField
+              onChange={this.handleChange}
+              id="applied_at"
+              value={this.props.application.applied_at}
+              />
 
-        {/* <TextField
-          onChange={this.handleChange}
-          id="job_posting_link"
-          value={this.props.application.job_posting_link}
-        />
+              <TextField
+              onChange={this.handleChange}
+              id="updated_at"
+              value={this.props.application.updated_at}
+              />
 
-        <TextField
-          onChange={this.handleChange}
-          id="job_posting_source"
-          value={this.props.application.job_posting_source}
-        />
+              <TextField
+              onChange={this.handleChange}
+              id="locaton"
+              value={this.props.application.locaton}
+              />
 
-        <TextField
-          onChange={this.handleChange}
-          id="applied_at"
-          value={this.props.application.applied_at}
-        />
-
-        <TextField
-          onChange={this.handleChange}
-          id="updated_at"
-          value={this.props.application.updated_at}
-        />
-
-        <TextField
-          onChange={this.handleChange}
-          id="locaton"
-          value={this.props.application.locaton}
-        />
-
-        <TextField
-          onChange={this.handleChange}
-          id="job_posting_to_pdf_link"
-          value={this.props.application.job_posting_to_pdf_link}
-        /> */}
-
+              <TextField
+              onChange={this.handleChange}
+              id="job_posting_to_pdf_link"
+              value={this.props.application.job_posting_to_pdf_link}
+              /> */}
+        </div>
      </div>
     );
   }
