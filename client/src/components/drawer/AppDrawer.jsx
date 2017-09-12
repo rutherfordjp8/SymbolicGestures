@@ -3,7 +3,7 @@ import AppDrawerInfo from './AppDrawerInfo.jsx';
 import AppDrawerNote from './AppDrawerNote.jsx';
 import AppDrawerHistory from './AppDrawerHistory.jsx';
 import AppDrawerContact from './AppDrawerContact.jsx';
-
+import styles from '../../../styles/drawer.css'
 class AppDrawer extends React.Component {
   constructor(props) {
     super(props);
@@ -12,8 +12,7 @@ class AppDrawer extends React.Component {
 
   render() {
     return (
-      <div className="JerryDrawer02">
-        <h1>AppDrawer</h1>
+      <div className={styles.drawer}>
         <AppDrawerInfo
           application={this.props.application}
           getApplicationsFromDB={this.props.getApplicationsFromDB}
