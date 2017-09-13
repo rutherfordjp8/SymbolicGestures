@@ -49,7 +49,7 @@ class AppDrawerInfo extends React.Component {
   }
 
   handleBlur(event) {
-    let route = `/api/applications/${this.props.application.id}`;
+    let route = `/api/notes/${this.props.application.id}`;
     let key = event.target.id;
     let val = event.target.value;
     let body = {};
