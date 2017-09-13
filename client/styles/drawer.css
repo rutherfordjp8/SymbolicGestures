@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   /*Change below to change the background/txt of all header colors.*/
-  --headers-bg-color: #00bcd4;
+  --headers-bg-color: #4d7198;
   --headers-txt-color: white;
 }
 
@@ -44,20 +44,30 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   width: 60%;
+  align-self: flex-start;
 }
 
 .contacts {
-  text-align: center;
-  width: 30%;
-  margin-top: 10px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+  text-align: center;
+  width: 35%;
+  margin-top: 10px;
+  align-self: flex-start;
   overflow: hidden;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.contactInfo {
+  padding: 5px;
 }
 
 .notesAndContacts {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .application h1, .notes h1, .contacts h1 {
