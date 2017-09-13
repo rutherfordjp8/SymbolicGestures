@@ -6,6 +6,7 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import DatePicker from 'material-ui/DatePicker';
 import TextField from 'material-ui/TextField';
+import styles from '../../../styles/drawer.css'
 
 import axios from 'axios';
 
@@ -102,8 +103,8 @@ class AppDrawerContact extends React.Component {
     ];
 
     return (
-      <div>
-        <h2>Contacts</h2>
+      <div className={styles.contacts}>
+        <h1>Contacts</h1>
         <div>
           <RaisedButton label="Add Contact" onClick={this.handleOpen} primary={true}/>
           <Dialog

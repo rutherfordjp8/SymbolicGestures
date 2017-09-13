@@ -1,9 +1,11 @@
 .drawer {
   padding: 15px;
-  /*Change this to change the background of all header colors.*/
+  color: #00bcd4;
+  display: flex;
+  flex-direction: column;
+  /*Change below to change the background/txt of all header colors.*/
   --headers-bg-color: #00bcd4;
   --headers-txt-color: white;
-  color: #00bcd4;
 }
 
 .application {
@@ -17,13 +19,6 @@
   height: 30%;
 }
 
-.application h1 {
-  background: var(--headers-bg-color);
-  color: var(--headers-txt-color);
-  margin-bottom: 15px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
 
 .applicationInfo {
   display: flex;
@@ -40,4 +35,35 @@
 .stageSelection {
   display: flex;
   margin-right: 0px;
+}
+
+.notes {
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+  margin-top: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 60%;
+}
+
+.contacts {
+  text-align: center;
+  width: 30%;
+  margin-top: 10px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+  overflow: hidden;
+}
+
+.notesAndContacts {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.application h1, .notes h1, .contacts h1 {
+  background: var(--headers-bg-color);
+  color: var(--headers-txt-color);
+  margin-bottom: 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
