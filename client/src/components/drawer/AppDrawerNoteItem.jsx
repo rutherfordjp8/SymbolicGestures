@@ -16,8 +16,6 @@ class AppDrawerNoteItem extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.note[0]) {
-      console.log('nextprops',nextProps)
-      console.log('nextProps note',nextProps.note[0].note);
       this.setState({
         note: nextProps.note[0].note,
         noteId: nextProps.note[0].id
