@@ -105,7 +105,7 @@ class AppDrawerContact extends React.Component {
     return (
       <div className={styles.contacts}>
         <h1>Contacts</h1>
-        <div>
+        <div className={styles.contactInfo}>
           <RaisedButton label="Add Contact" onClick={this.handleOpen} primary={true}/>
           <Dialog
             title="Enter Contact Info"
