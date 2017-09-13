@@ -12,7 +12,7 @@ const StageBarList = (props) => {
           let stageCount = props.stagesCount[stage.name] || 0,
               flexSize = stageCount > 3 ? 3 : stageCount;
           if (stageCount < 1) {flexSize = 1};
-
+          
           return <StageBarEntry
                   stage={stage}
                   count={stageCount}
@@ -22,9 +22,9 @@ const StageBarList = (props) => {
                   openSettings={props.openSettings}
                 />;
         })}
-        <li className={styles.addStage} onClick={props.addNewStage}>
+        {/*}<li className={styles.addStage} onClick={props.addNewStage}>
           Add Stage<br/>+
-        </li>
+        </li>*/}
       </ul>
     </div>
   );

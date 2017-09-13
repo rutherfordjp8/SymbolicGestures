@@ -16,6 +16,7 @@ const fakeApplicationsGenerator = require('./../../config/fakeApplicationsGenera
 
 let fakeApplications = fakeApplicationsGenerator(15);
 let fakestages_settings = [
+  { name: 'Considering', backgroundColor: '#FF9800', textColor: 'black' },
   { name: 'Applied', backgroundColor: '#FFC107', textColor: 'black' },
   { name: 'Phone Screen', backgroundColor: '#2196F3', textColor: 'white' },
   { name: 'OFFER', backgroundColor: '#009688', textColor: 'white' },
@@ -39,11 +40,19 @@ class App extends React.Component {
     this.state = { // for data from database
       userId: undefined,
       applications: [],
-      stages_settings: [],
       stageNameToColorHash: {},
       stagesCount: {},
       navBarIsHidden: false,
-      profile: {}
+      profile: {},
+      stages_settings: [
+        { name: 'Considering', backgroundColor: 'rgba(138, 133, 122, 0.32)', textColor: 'black' },
+        { name: 'Applied', backgroundColor: '#ffd042', textColor: 'black' },
+        { name: 'Phone Screen', backgroundColor: '#eb9444', textColor: 'white' },
+        { name: 'Tech Screen', backgroundColor: '#50abd8', textColor: 'white' },
+        { name: 'On Site', backgroundColor: '#9256a0', textColor: 'white' },
+        { name: 'Offer', backgroundColor: '#0da17d', textColor: 'white' },
+        { name: 'Denied', backgroundColor: '#eb3d34', textColor: 'white' }
+      ],
     };
     // this.state = { // for data from fake data
     //   applications: fakeApplications,
@@ -73,13 +82,20 @@ class App extends React.Component {
     axios.get('/api/profiles')
       .then((userData) => {
         let allData = userData.data;
+<<<<<<< HEAD
         let stages_settings = userData.data.stages_settings;
         let profile = userData.data;
+=======
+>>>>>>> Took out add and edit stage bar features
         let userId = userData.data.id;
 
-        this.stageNameToColorHash(stages_settings);
+        this.stageNameToColorHash(this.state.stages_settings);
 
+<<<<<<< HEAD
         this.setState({stages_settings, profile, userId});
+=======
+        this.setState({userId});
+>>>>>>> Took out add and edit stage bar features
 
 
         // console.log('stageNameToColorHash:', stageNameToColorHash);
