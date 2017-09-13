@@ -14,9 +14,10 @@ class DropDownWithZeroPadding extends React.Component {
     this.updateOneStageToDB = this.updateOneStageToDB.bind(this);
   }
 
-
+  
   componentWillReceiveProps(nextProps) {
-    if (nextProps.stage !== undefined) {
+    if (nextProps.stage) {
+      console.log(nextProps.stage)
       this.setState({
         dropDownText: nextProps.stage
       });
