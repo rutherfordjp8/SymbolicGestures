@@ -22,12 +22,10 @@ class AppDrawer extends React.Component {
           updateOneAppStage={this.props.updateOneAppStage}
           selectAppIdx={this.props.selectAppIdx}
         />
-        <AppDrawerNote application={this.props.application}
-          getApplicationsFromDB={this.props.getApplicationsFromDB}
-        />
-        <AppDrawerContact application={this.props.application}
-          getApplicationsFromDB={this.props.getApplicationsFromDB}
-        />
+      <div className={styles.notesAndContacts}>
+        <AppDrawerNote application={this.props.application} getApplicationsFromDB={this.props.getApplicationsFromDB}/>
+        <AppDrawerContact application={this.props.application} getApplicationsFromDB={this.props.getApplicationsFromDB}/>
+      </div>
         <AppDrawerHistory application={this.props.application}/>
       </div>
     );

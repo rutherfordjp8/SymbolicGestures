@@ -1,5 +1,6 @@
 import React from 'react';
 import AppDrawerNoteItem from './AppDrawerNoteItem.jsx';
+import styles from '../../../styles/drawer.css'
 
 class AppDrawerNote extends React.Component {
   constructor(props) {
@@ -10,8 +11,8 @@ class AppDrawerNote extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Notes</h2>
+      <div className={styles.notes}>
+        <h1>Notes</h1>
         <AppDrawerNoteItem
           note={this.props.application.notes}
           key={0}
