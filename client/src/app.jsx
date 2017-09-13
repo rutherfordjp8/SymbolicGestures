@@ -82,20 +82,11 @@ class App extends React.Component {
     axios.get('/api/profiles')
       .then((userData) => {
         let allData = userData.data;
-<<<<<<< HEAD
-        let stages_settings = userData.data.stages_settings;
-        let profile = userData.data;
-=======
->>>>>>> Took out add and edit stage bar features
         let userId = userData.data.id;
 
         this.stageNameToColorHash(this.state.stages_settings);
 
-<<<<<<< HEAD
-        this.setState({stages_settings, profile, userId});
-=======
-        this.setState({userId});
->>>>>>> Took out add and edit stage bar features
+        this.setState({profile, userId});
 
 
         // console.log('stageNameToColorHash:', stageNameToColorHash);
