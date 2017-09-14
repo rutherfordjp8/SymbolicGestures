@@ -19,7 +19,6 @@ class AppDrawer extends React.Component {
 
   deleteApplication() {
     let route = `/api/deleteApplication/${this.props.application.id}`;
-    console.log('route :',route)
     axios.post(route)
       .then(this.props.getApplicationsFromDB());
   }
