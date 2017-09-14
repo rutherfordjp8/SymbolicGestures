@@ -5,6 +5,8 @@ import AppDrawerHistory from './AppDrawerHistory.jsx';
 import AppDrawerContact from './AppDrawerContact.jsx';
 import FlatButton from 'material-ui/FlatButton';
 import PropTypes from 'prop-types'
+import axios from 'axios';
+
 
 import styles from '../../../styles/drawer.css'
 
@@ -12,6 +14,14 @@ class AppDrawer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.deleteApplication = this.deleteApplication.bind(this);
+  }
+
+  deleteApplication() {
+    let route = `/api/deleteApplication/${this.props.application.id}`;
+    console.log('route :',route)
+    axios.post(route)
+      .then(this.props.getApplicationsFromDB());
   }
 
   render() {
@@ -36,6 +46,7 @@ class AppDrawer extends React.Component {
           style={{'float': 'left','color': 'red'}}
           primary={true}
           keyboardFocused={true}
+          onClick={this.deleteApplication}
         />
 
     </div>
