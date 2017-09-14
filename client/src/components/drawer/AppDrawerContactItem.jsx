@@ -14,7 +14,7 @@ class AppDrawerContactItem extends React.Component {
   }
 
   handleDeleteContact(event) {
-   console.log('delete the contact with this id:' , this.props.contact.id)
+   console.log('delete the contact with this id:' , event.target.value)
   }
   handleEdit(event) {
    console.log('edit the contact with this id:' , this.props.contact.id)
@@ -26,7 +26,7 @@ class AppDrawerContactItem extends React.Component {
           <Card>
             <Card.Content>
               <Card.Header>{this.props.contact.name}</Card.Header>
-              {/* <Icon link name='close'/> */}
+              <Icon link name='close' onClick={this.handleDeleteContact}/>
               <Card.Meta>{this.props.contact.role}</Card.Meta>
               <Card.Description>{this.props.contact.email}</Card.Description>
               <Card.Description>{this.props.contact.phone}</Card.Description>

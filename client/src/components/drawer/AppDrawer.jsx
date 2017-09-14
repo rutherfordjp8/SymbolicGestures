@@ -3,6 +3,7 @@ import AppDrawerInfo from './AppDrawerInfo.jsx';
 import AppDrawerNote from './AppDrawerNote.jsx';
 import AppDrawerHistory from './AppDrawerHistory.jsx';
 import AppDrawerContact from './AppDrawerContact.jsx';
+import FlatButton from 'material-ui/FlatButton';
 import PropTypes from 'prop-types'
 
 import styles from '../../../styles/drawer.css'
@@ -29,7 +30,15 @@ class AppDrawer extends React.Component {
         <AppDrawerContact application={this.props.application} getApplicationsFromDB={this.props.getApplicationsFromDB}/>
       </div>
         <AppDrawerHistory application={this.props.application}/>
-      </div>
+
+        <FlatButton
+          label="Delete"
+          style={{'float': 'left','color': 'red'}}
+          primary={true}
+          keyboardFocused={true}
+        />
+
+    </div>
     );
   }
 }
