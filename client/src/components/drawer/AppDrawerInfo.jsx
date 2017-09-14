@@ -1,11 +1,11 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
-
+import MiniStageBar from '../miniStageBar/MiniStageBar.jsx';
 import axios from 'axios';
 import PropTypes from 'prop-types'
 
 import AppDrawerInfoDropDown from './AppDrawerInfoDropDown.jsx'
-import styles from '../../../styles/drawer.css'
+import styles from '../../../styles/drawer.css';
 
 class AppDrawerInfo extends React.Component {
   constructor(props) {
@@ -75,18 +75,26 @@ class AppDrawerInfo extends React.Component {
   render() {
     return (
       <div className={styles.application}>
-        <h1>Application</h1>
-
-        <AppDrawerInfoDropDown
-          className={styles.stageSelection}
-          getApplicationsFromDB={this.props.getApplicationsFromDB}
-          application={this.props.application}
-          stages_settings={this.props.stages_settings}
-          stageNameToColorHash={this.props.stageNameToColorHash}
+        {/*<h1>Application</h1>*/}
+        <MiniStageBar
+          stages={this.props.stages_settings}
           stage={this.props.application.stage}
+          application={this.props.application}
           updateOneAppStage={this.props.updateOneAppStage}
           selectAppIdx={this.props.selectAppIdx}
-          />
+        />
+      {/*
+        <AppDrawerInfoDropDown
+        className={styles.stageSelection}
+        getApplicationsFromDB={this.props.getApplicationsFromDB}
+        application={this.props.application}
+        stages_settings={this.props.stages_settings}
+        stageNameToColorHash={this.props.stageNameToColorHash}
+        stage={this.props.application.stage}
+        updateOneAppStage={this.props.updateOneAppStage}
+        selectAppIdx={this.props.selectAppIdx}
+        />
+        */}
         <div className={styles.applicationInfo}>
           <div className={styles.appInfo_col_1}>
             <TextField

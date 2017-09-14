@@ -45,7 +45,7 @@ class App extends React.Component {
       navBarIsHidden: false,
       profile: {},
       stages_settings: [
-        { name: 'Considering', backgroundColor: 'rgba(138, 133, 122, 0.32)', textColor: 'black' },
+        { name: 'Considering', backgroundColor: '#dad8d3', textColor: 'black' },
         { name: 'Applied', backgroundColor: '#ffd042', textColor: 'black' },
         { name: 'Phone Screen', backgroundColor: '#eb9444', textColor: 'white' },
         { name: 'Tech Screen', backgroundColor: '#50abd8', textColor: 'white' },
