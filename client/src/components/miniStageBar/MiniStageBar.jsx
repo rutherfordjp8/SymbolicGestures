@@ -1,5 +1,6 @@
 import React from 'react';
 import MiniStageBarList from './MiniStageBarList.jsx';
+import styles from '../../../styles/miniStageBar.css';
 
 class MiniStageBar extends React.Component {
   constructor(props) {
@@ -16,13 +17,15 @@ class MiniStageBar extends React.Component {
 
   }
 
-
   render() {
     return (
-      <div className={styles.stageBar}>
-        <StageBarList
+      <div className={styles.miniStageBarContainer}>
+        <MiniStageBarList
           stages={this.props.stages}
-        />
+          stage={this.props.stage}
+          selectAppIdx={this.props.selectAppIdx}
+          updateOneAppStage={this.props.updateOneAppStage}
+          />
       </div>
     );
   };

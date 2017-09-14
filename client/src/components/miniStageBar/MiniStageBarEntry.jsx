@@ -1,15 +1,43 @@
 import React from 'react';
-import styles from '../../../styles/stageBar.css';
+import styles from '../../../styles/miniStageBar.css';
 
 const MiniStageBarEntry = (props) => {
   let style = {
-    'color': props.stage.textColor,
-    'background': props.stage.backgroundColor,
+    'color': props.textColor,
+    'background': props.bgColor,
+    'paddingTop': '7px',
+    'opacity': props.opacity
   };
-  return (
-    <li style={style}>
-      {props.stage.name}
-    </li>
-  );
+
+  let onHoverOpacity = function(el) {
+    el.target.style.opacity = 1;
+  }
+
+  let outHoverOpacity = function(el) {
+    el.target.style.opacity = .2;
+  }
+
+  if (props.addOnHover) {
+    return (
+      <li
+        style={style}
+        onMouseOver={onHoverOpacity}
+        onMouseOut={outHoverOpacity}
+        onClick={() => {props.updateOneAppStage(props.selectAppIdx, props.stage.name)}}
+      >
+        {props.stage.name}
+      </li>
+    );
+  } else {
+
+    return (
+      <li
+        style={style}
+        onClick={() => {props.updateOneAppStage(props.selectAppIdx, props.stage.name)}}
+      >
+        {props.stage.name}
+      </li>
+    );
+  }
 };
 export default MiniStageBarEntry;

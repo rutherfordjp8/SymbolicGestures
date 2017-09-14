@@ -1,0 +1,36 @@
+.miniStageBarContainer {
+
+}
+
+
+.miniStageBar ul {
+  display:flex;
+  flex-direction: row;
+  list-style-type: none;
+  width: 100%;
+  height: inherit;
+  margin: 10px;
+  margin-left: 0px;
+  margin-top: 0px;
+  margin-right: 0px;
+  min-height: 35px;
+  max-height: 35px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.miniStageBar li {
+  flex-grow:1;
+  text-align: center;
+  min-width: 20px;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  padding: auto;
+}
+
+.stageEntry {
+  margin: auto;
+  margin-right: 0px;
+  margin-left:  0px;
+  padding: 5px;
+}

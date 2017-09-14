@@ -70,10 +70,18 @@
   margin-right: 5px;
 }
 
-.application h1, .notes h1, .contacts h1 {
+.notes h1, .contacts h1 {
   background: var(--headers-bg-color);
   color: var(--headers-txt-color);
   margin-bottom: 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.application h1 {
+  background: var(--headers-bg-color);
+  color: var(--headers-txt-color);
+  margin-bottom: 0px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
