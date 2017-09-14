@@ -3,8 +3,10 @@ import AppDrawerInfo from './AppDrawerInfo.jsx';
 import AppDrawerNote from './AppDrawerNote.jsx';
 import AppDrawerHistory from './AppDrawerHistory.jsx';
 import AppDrawerContact from './AppDrawerContact.jsx';
+import PropTypes from 'prop-types'
 
 import styles from '../../../styles/drawer.css'
+
 class AppDrawer extends React.Component {
   constructor(props) {
     super(props);
@@ -33,3 +35,7 @@ class AppDrawer extends React.Component {
 }
 
 export default AppDrawer
+
+AppDrawer.propTypes = {
+
+}

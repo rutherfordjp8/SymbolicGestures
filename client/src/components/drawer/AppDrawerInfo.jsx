@@ -2,6 +2,7 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 
 import axios from 'axios';
+import PropTypes from 'prop-types'
 
 import AppDrawerInfoDropDown from './AppDrawerInfoDropDown.jsx'
 import styles from '../../../styles/drawer.css'
@@ -177,3 +178,7 @@ class AppDrawerInfo extends React.Component {
 }
 
 export default AppDrawerInfo;
+
+AppDrawerInfo.propTypes = {
+  
+}

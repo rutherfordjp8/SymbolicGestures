@@ -114,7 +114,6 @@ class AppDrawerContact extends React.Component {
             open={this.state.open}
             onRequestClose={this.handleClose}
           >
-            Subtext
             <div>
               <TextField
                 id="name"
