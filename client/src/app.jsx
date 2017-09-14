@@ -83,7 +83,7 @@ class App extends React.Component {
       .then((userData) => {
         let allData = userData.data;
         let userId = userData.data.id;
-
+        let profile = userData.data;
         this.stageNameToColorHash(this.state.stages_settings);
 
         this.setState({profile, userId});
