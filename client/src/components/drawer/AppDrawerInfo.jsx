@@ -16,7 +16,8 @@ class AppDrawerInfo extends React.Component {
       job_title: '',
       stage: '',
       job_posting_source: '',
-      job_posting_link: ''
+      job_posting_link: '',
+      salary: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
@@ -30,7 +31,8 @@ class AppDrawerInfo extends React.Component {
       job_title: nextProps.application.job_title,
       stage: nextProps.application.stage,
       job_posting_source: nextProps.application.job_posting_source,
-      job_posting_link: nextProps.application.job_posting_link
+      job_posting_link: nextProps.application.job_posting_link,
+      salary: nextProps.application.salary
     });
   }
 
@@ -146,6 +148,14 @@ class AppDrawerInfo extends React.Component {
                 id="job_posting_link"
                 value={this.state.job_posting_link || ''}
                 floatingLabelText='job_posting_link'
+                />
+              <TextField
+                className="dollar"
+                onBlur={this.handleBlur}
+                onChange={this.handleChange}
+                id="salary"
+                value={this.state.salary || ''}
+                floatingLabelText='salary'
                 />
             </div>
             {/* <TextField

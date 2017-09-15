@@ -61,6 +61,7 @@ exports.up = function (knex, Promise) {
       table.string('name', 100).nullable();
       table.string('email', 100).nullable();
       table.string('phone', 100).nullable();
+      table.timestamp('last_contact_date').nullable().defaultTo(knex.fn.now());
       table.timestamps(true, true);
     }),
     knex.raw('CREATE EXTENSION IF NOT EXISTS pg_trgm')

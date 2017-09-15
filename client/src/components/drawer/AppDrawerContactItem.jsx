@@ -36,6 +36,7 @@ class AppDrawerContactItem extends React.Component {
               <Card.Meta>{this.props.contact.role}</Card.Meta>
               <Card.Description>{this.props.contact.email}</Card.Description>
               <Card.Description>{this.props.contact.phone}</Card.Description>
+              <Card.Description>{this.props.contact.last_contact_date}</Card.Description>
             </Card.Content>
           </Card>
       </div>
