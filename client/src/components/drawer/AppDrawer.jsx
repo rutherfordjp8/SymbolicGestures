@@ -39,16 +39,18 @@ class AppDrawer extends React.Component {
         <AppDrawerNote application={this.props.application} getApplicationsFromDB={this.props.getApplicationsFromDB}/>
         <AppDrawerContact application={this.props.application} getApplicationsFromDB={this.props.getApplicationsFromDB}/>
       </div>
+      <div>
         <AppDrawerHistory application={this.props.application}/>
-
+      </div>
+      <div>
         <FlatButton
           label="Delete"
-          style={{'float': 'left','color': 'red'}}
+          style={{'float': 'right','color': 'red'}}
           primary={true}
           keyboardFocused={true}
           onClick={this.deleteApplication}
         />
-
+      </div>
     </div>
     );
   }
