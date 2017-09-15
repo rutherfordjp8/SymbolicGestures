@@ -96,6 +96,7 @@ export default class MateUiRightDrawer extends React.Component {
             stageNameToColorHash={this.props.stageNameToColorHash}
             updateOneAppStage={this.props.updateOneAppStage}
             selectedAppIdx={this.props.selectedAppIdx}
+            updateOneKeyValPairInFE={this.props.updateOneKeyValPairInFE}
           />
         </Drawer>
       </div>

@@ -94,6 +94,8 @@ export default class DrawerAndApplicationTable extends React.Component {
           updateOneAppStage={this.props.updateOneAppStage}
           selectedAppIdx={this.state.selectedAppIdx}
           createNewApplicationInFE={this.props.createNewApplicationInFE}
+          updateOneKeyValPairInFE={this.props.updateOneKeyValPairInFE}
+
         />
       </MuiThemeProvider>
       <Segment style={segmentStyle}>
@@ -195,7 +197,7 @@ export default class DrawerAndApplicationTable extends React.Component {
 //     return (
 //       <Table.Cell
 //         style={{ textAlign: 'center' }}
-//       ><a href={job_posting_link}><u>Link</u></a></Table.Cell>  
+//       ><a href={job_posting_link}><u>Link</u></a></Table.Cell>
 //     );
 //   }
 //   return (

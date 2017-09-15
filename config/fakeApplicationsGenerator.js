@@ -54,7 +54,7 @@ let oneFakeApplication = () => {
     job_posting_to_pdf_link: faker.internet.url(),
     notes: [
       { type: 'note', note: faker.lorem.paragraph() },
-      { type: 'codeSnippet', note: faker.lorem.sentence() },
+      // { type: 'codeSnippet', note: faker.lorem.sentence() },
     ],
     histories: possHistories,
     contacts: possContacts,

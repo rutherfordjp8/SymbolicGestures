@@ -21,6 +21,7 @@ class AppDrawerInfo extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
     this.createHistoryEntry = this.createHistoryEntry.bind(this);
+    console.log(this.props.updateOneKeyValPairInFE)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -188,5 +189,5 @@ class AppDrawerInfo extends React.Component {
 export default AppDrawerInfo;
 
 AppDrawerInfo.propTypes = {
-  
+
 }
