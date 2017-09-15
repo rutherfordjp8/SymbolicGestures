@@ -21,7 +21,6 @@ class AppDrawerInfo extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
     this.createHistoryEntry = this.createHistoryEntry.bind(this);
-    console.log(this.props.updateOneKeyValPairInFE)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -57,6 +56,7 @@ class AppDrawerInfo extends React.Component {
     let val = event.target.value;
     let body = {};
     body[key] = val;
+    this.props.updateOneKeyValPairInFE(this.props.selectedAppIdx, key, val);
     axios.post(route, body)
       .then(this.props.getApplicationsFromDB());
     // .then((message) => {console.log(message)})
