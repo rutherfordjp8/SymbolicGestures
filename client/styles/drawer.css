@@ -32,6 +32,59 @@
   padding: 5px;
 }
 
+.jobLinkRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.jobLinkRow i {
+  color:grey;
+  margin-top: 15px;
+}
+
+.jobLinkRow i:hover {
+  color:black;
+  cursor: pointer;
+}
+
+.jobLinkRow .tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.jobLinkRow .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: var(--headers-bg-color);
+    color: var(--headers-txt-color);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 80%;
+    left: 30%;
+    margin-left: -60px;
+}
+
+.jobLinkRow .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--headers-bg-color) transparent transparent transparent;
+}
+
+.jobLinkRow .tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+
+
 .stageSelection {
   display: flex;
   margin-right: 0px;

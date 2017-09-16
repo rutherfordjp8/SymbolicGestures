@@ -35,6 +35,7 @@ export default class DrawerAndApplicationTable extends React.Component {
     this.setSelectAppToNewApp = this.setSelectAppToNewApp.bind(this);
     this.openDrawer = this.openDrawer.bind(this);
     this.closeDrawer = this.closeDrawer.bind(this);
+    this.attemptWebScrape = this.attemptWebScrape.bind(this);
     // this.updateJobPostingSource = this.updateJobPostingSource.bind(this);
   }
 
@@ -46,6 +47,35 @@ export default class DrawerAndApplicationTable extends React.Component {
     }
   }
 
+  /**
+   * Attempts to scrape a website for the application information and update
+   * info to it.
+   * @param  {integer} idx  The index of the application currently open.
+   * @param  {string} link  The web address of the application.
+   */
+  attemptWebScrape(idx, link) {
+    let changedValues = false,
+        route = `/api/applications/${this.state.selectedApplication.id}`,
+        body = {};
+    console.log(this.state.selectedApplication);
+
+    link = {'website': link};
+    axios.post('api/webScraper', link)
+      .then((data) => {
+        const jobInfo = data.data;
+        console.log(jobInfo);
+        for (let key in jobInfo) {
+          if(!this.state.selectedApplication[key] && key !== 'logo') {
+            changedValues = true;
+            body[key] = jobInfo[key];
+            this.props.updateOneKeyValPairInFE(idx, key, jobInfo[key]);
+          }
+        }
+        if (changedValues) {
+          axios.post(route, body);
+        }
+      });
+  }
 
   setSelectAppToNewApp() {
     // console.log('setSelect:', this.props.applications[0]);
@@ -97,7 +127,7 @@ export default class DrawerAndApplicationTable extends React.Component {
           selectedAppIdx={this.state.selectedAppIdx}
           createNewApplicationInFE={this.props.createNewApplicationInFE}
           updateOneKeyValPairInFE={this.props.updateOneKeyValPairInFE}
-
+          attemptWebScrape={this.attemptWebScrape}
         />
       </MuiThemeProvider>
       <Segment style={segmentStyle}>
@@ -186,6 +216,7 @@ export default class DrawerAndApplicationTable extends React.Component {
                     appKey={'job_posting_link'}
                     placeHolder={'Link'}
                     updateOneKeyValPairInFE={this.props.updateOneKeyValPairInFE}
+                    attemptWebScrape={this.attemptWebScrape}
                     idx={idx}
                     cellStyle={{ padding: '0.2% 0.2% 0px 0.2%', width: '7.5%' }}
                   />

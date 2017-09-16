@@ -34,6 +34,7 @@ class AppDrawer extends React.Component {
           updateOneAppStage={this.props.updateOneAppStage}
           selectedAppIdx={this.props.selectedAppIdx}
           updateOneKeyValPairInFE={this.props.updateOneKeyValPairInFE}
+          attemptWebScrape={this.props.attemptWebScrape}
         />
       <div className={styles.notesAndContacts}>
         <AppDrawerNote application={this.props.application} getApplicationsFromDB={this.props.getApplicationsFromDB}/>
