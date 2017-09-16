@@ -31,7 +31,7 @@ exports.up = function (knex, Promise) {
       table.increments('id').unsigned().primary();
       table.integer('profile_id').references('profiles.id').onDelete('CASCADE').notNullable();
       table.string('stage', 50).defaultTo('Applied');
-      table.string('job_posting_link').nullable();
+      table.string('job_posting_link', 800).nullable();
       table.string('company_name', 50).nullable();
       table.string('job_title', 50).nullable();
       table.string('location', 100).nullable();
