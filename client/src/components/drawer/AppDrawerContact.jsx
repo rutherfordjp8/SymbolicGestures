@@ -116,6 +116,7 @@ class AppDrawerContact extends React.Component {
           >
             <div>
               <TextField
+                autoFocus
                 id="name"
                 value={this.state.name}
                 onChange={this.handleChange}

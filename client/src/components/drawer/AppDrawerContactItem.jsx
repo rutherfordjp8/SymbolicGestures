@@ -9,10 +9,19 @@ import styles from '../../../styles/jerryStyleBox.css';
 class AppDrawerContactItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      controlledDate: null,
+    };
     this.handleDeleteContact = this.handleDeleteContact.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
+
+  handleChange(event, date) {
+    this.setState({
+      controlledDate: date,
+    });
+  };
 
   handleDeleteContact(event) {
    let route = `/api/deleteContact/${this.props.contact.id}`
@@ -36,7 +45,11 @@ class AppDrawerContactItem extends React.Component {
               <Card.Meta>{this.props.contact.role}</Card.Meta>
               <Card.Description>{this.props.contact.email}</Card.Description>
               <Card.Description>{this.props.contact.phone}</Card.Description>
-              <Card.Description>{this.props.contact.last_contact_date}</Card.Description>
+              <Card.Description>{"Last contact: " + this.props.contact.last_contact_date.slice(0,10)}</Card.Description>
+              {/* <DatePicker
+                 selected={this.state.controlledDate}
+                 onChange={this.handleChange}
+              /> */}
             </Card.Content>
           </Card>
       </div>

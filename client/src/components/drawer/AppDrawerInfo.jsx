@@ -150,7 +150,6 @@ class AppDrawerInfo extends React.Component {
                 floatingLabelText='job_posting_link'
                 />
               <TextField
-                className="dollar"
                 onBlur={this.handleBlur}
                 onChange={this.handleChange}
                 id="salary"
