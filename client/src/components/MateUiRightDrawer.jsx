@@ -97,6 +97,7 @@ export default class MateUiRightDrawer extends React.Component {
             updateOneAppStage={this.props.updateOneAppStage}
             selectedAppIdx={this.props.selectedAppIdx}
             updateOneKeyValPairInFE={this.props.updateOneKeyValPairInFE}
+            attemptWebScrape={this.props.attemptWebScrape}
           />
         </Drawer>
       </div>

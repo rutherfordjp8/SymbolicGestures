@@ -4,6 +4,7 @@ import MiniStageBar from '../miniStageBar/MiniStageBar.jsx';
 import axios from 'axios';
 import PropTypes from 'prop-types'
 
+import { Icon } from 'semantic-ui-react'
 import AppDrawerInfoDropDown from './AppDrawerInfoDropDown.jsx'
 import styles from '../../../styles/drawer.css';
 
@@ -142,6 +143,33 @@ class AppDrawerInfo extends React.Component {
                 value={this.state.job_posting_source || ''}
                 floatingLabelText='job_posting_source'
                 />
+              <div className={styles.jobLinkRow}>
+                {/*<input
+                  type='button'
+                  value='Get Info'
+                  onClick={
+                    () => {this.props.attemptWebScrape(this.props.selectedAppIdx, this.state.job_posting_link);
+                  }}
+                />*/}
+                <TextField
+                  onBlur={this.handleBlur}
+                  onChange={this.handleChange}
+                  id="job_posting_link"
+                  value={this.state.job_posting_link || ''}
+                  floatingLabelText='job_posting_link'
+                />
+                <div className={styles.tooltip}>
+                  <Icon
+
+                    onClick={
+                      () => {this.props.attemptWebScrape(this.props.selectedAppIdx, this.state.job_posting_link);
+                    }}
+                    name='edit'
+                  />
+                <p className={styles.tooltiptext}>Autofill data from entered link</p>
+                </div>
+
+              </div>
               <TextField
                 onBlur={this.handleBlur}
                 onChange={this.handleChange}

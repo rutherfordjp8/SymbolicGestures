@@ -62,8 +62,8 @@ module.exports.createOrUpdateApp = (req, res) => {
           });
         }
       })
-      .then(() => {
-        res.status(200).send('application successfully updated!');
+      .then((data) => {
+        res.status(200).send(data);
       })
       .catch(err => {
         res.status(503).send(err + 'application did not save');

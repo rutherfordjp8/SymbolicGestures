@@ -59,7 +59,7 @@ class ConditionalTableCell extends Component {
         ><a href={this.props.application[this.props.appKey]}><u>Link</u></a></Table.Cell>
       );
     }
-  
+
     if (this.props.application[this.props.appKey] === null || this.state.formView === true) {
       return (
         <Table.Cell style={this.props.cellStyle}>
@@ -67,7 +67,10 @@ class ConditionalTableCell extends Component {
             <Form.Field>
               <input
                 onChange={this.handleChange}
-                onBlur={() => this.deActivateFormView(this.props.idx, this.props.appKey, this.props.application)}
+                onBlur={() => {
+                  this.deActivateFormView(this.props.idx, this.props.appKey, this.props.application);
+                  this.props.attemptWebScrape(this.props.idx, this.state.userInput);
+                }}
                 value={this.state.userInput}
                 placeholder={this.props.placeHolder}
               />
@@ -76,7 +79,7 @@ class ConditionalTableCell extends Component {
         </Table.Cell>
       );
     }
-  
+
 
     if (this.props.application[this.props.appKey].length !== 0 && this.state.formView === false) {
       return (<Table.Cell
@@ -104,10 +107,3 @@ class ConditionalTableCell extends Component {
 }
 
 export default ConditionalTableCell;
-
-
-
-
-
-
-
