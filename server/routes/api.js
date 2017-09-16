@@ -107,6 +107,13 @@ router.route('/deleteContact/:id')
   .post(ApplicationController.deleteContact);
 
 /**
+ * attemps to scrape the website entered
+ * @return {Object} application information from the scraper.
+ */
+router.route('/webScraper')
+  .post(ApplicationController.webScraper);
+
+/**
  * With a GET - Returns user's stage preference.
  * With a POST - edits user's stage preference.
  * @param  {Object} reqBody post request body form is {stages_settings: [{'name': Applied, 'backgroundColor':'#FFC107', textColor: 'black'}...]}

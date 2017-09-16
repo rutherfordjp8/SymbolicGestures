@@ -1,5 +1,8 @@
 const models = require('../../db/models');
 const bookshelf = require('../../db');
+const request = require('request');
+const cheerio = require('cheerio');
+const URL = require("url-parse");
 /**
  * returns all apps of the user.
  * @return {Array}     Returns an array of applications tree of the user.
@@ -278,4 +281,38 @@ module.exports.deleteContact = (req, res) => {
         console.error(err)
       });
   })
+};
+
+module.exports.webScraper = (req,res) => {
+  let link = req.body.website,
+      source = new URL(link);
+  // console.log(source.hostname)
+  // console.log("www.indeed.com");
+  // console.log(source.hostname, typeof source.hostname)
+  // console.log(source.hostname === 'www.indeed.com')
+  // if the link is indeed.com, scrape it.
+  if (source.hostname === "www.indeed.com") {
+    request(link, function(err, resp, body) {
+      console.log(err);
+      let $ = cheerio.load(body),
+              companyName = $('.company', 'div[data-tn-component="jobHeader"]').text(),
+              jobTitle = $('.jobtitle').text(),
+              jobSummary = $('#job_summary').text(),
+              location = $('.location', 'div[data-tn-component="jobHeader"]').text(),
+              logo = $('.cmp_logo_img').attr('src');
+      let response = {
+        company_name: companyName,
+        job_title: jobTitle,
+        job_summary: jobSummary,
+        location: location,
+        logo: logo,
+        job_posting_source: source.hostname
+      }
+      res.status(200).send(response);
+    });
+  } else {
+    res.status(502).send(link);
+  }
+
+
 };
