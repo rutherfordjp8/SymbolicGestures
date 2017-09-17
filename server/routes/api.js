@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const ApplicationController = require('../controllers').Applications;
 const ProfilesController = require('../controllers').Profiles;
-
+const FeedController = require('../controllers').Feed;
 /**
  * With a GET - Returns all applications of the user.
  * With a POST - Adds an application for the user.
@@ -141,4 +141,7 @@ router.route('/organizations')
 router.route('/organizations/:id')
   .post(ProfilesController.createOrUpdateOrganization);
 
+router.route('/feed')
+  .get(FeedController.feedGet)
+  .post(FeedController.feedAdd)
 module.exports = router;

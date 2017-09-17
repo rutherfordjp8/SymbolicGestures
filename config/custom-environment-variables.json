@@ -30,5 +30,11 @@
       "consumerSecret": "LINKEDIN_CLIENT_SECRET",
       "callbackURL": "LINKEDIN_CALLBACK_URL"
     }
+  },
+
+  "stream": {
+    "streamKey": "STREAM_KEY",
+    "streamSecret": "STREAM_SECRET",
+    "streamId": "STREAM_ID"
   }
 }
