@@ -166,7 +166,7 @@ class AppDrawerInfo extends React.Component {
                     }}
                     name='edit'
                   />
-                <p className={styles.tooltiptext}>Autofill data from entered link</p>
+                <p className={styles.tooltiptext}>Autofill</p>
                 </div>
 
               </div>
