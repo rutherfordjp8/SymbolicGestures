@@ -12,6 +12,8 @@ import Navbar from './components/Header/Navbar.jsx';
 import StageBar from './components/stageBar/StageBar.jsx';
 import DrawerAndApplicationTable from './components/DrawerAndApplicationTable.jsx';
 import Analytics from './components/analytics/Analytics.jsx';
+import Connect from './components/connect/Connect.jsx';
+
 const fakeApplicationsGenerator = require('./../../config/fakeApplicationsGenerator.js');
 
 let fakeApplications = fakeApplicationsGenerator(15);
@@ -441,9 +443,7 @@ class App extends React.Component {
               path = {'/connect'}
               render = { () => {return (
                 <div>
-                  <div className={seanStyleBox.box_94per_3perMg}></div>
-                  <div> Connect! </div>
-                  <img src='https://files.slack.com/files-pri/T60JJS25A-F70E8US1H/2017-09-08_06.00.10_pm.png' />
+                  <Connect />
                 </div>
               )}}
             />
