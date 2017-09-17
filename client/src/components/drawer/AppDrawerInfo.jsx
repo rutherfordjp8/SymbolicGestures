@@ -173,13 +173,6 @@ class AppDrawerInfo extends React.Component {
               <TextField
                 onBlur={this.handleBlur}
                 onChange={this.handleChange}
-                id="job_posting_link"
-                value={this.state.job_posting_link || ''}
-                floatingLabelText='job_posting_link'
-                />
-              <TextField
-                onBlur={this.handleBlur}
-                onChange={this.handleChange}
                 id="salary"
                 value={this.state.salary || ''}
                 floatingLabelText='salary'
