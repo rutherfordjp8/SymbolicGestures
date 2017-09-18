@@ -64,6 +64,15 @@ exports.up = function (knex, Promise) {
       table.timestamp('last_contact_date').nullable().defaultTo(knex.fn.now());
       table.timestamps(true, true);
     }),
+    knex.schema.createTableIfNotExists('feed_messages', function(table) {
+      table.increments('id').unsigned().primary();
+      table.integer('message_id').references('feed_messages.id').onDelete('CASCADE').nullable();
+      table.string('message').nullable();
+      table.string('message_type', 100).notNullable();
+      table.integer('organization_id').nullable();
+      table.integer('profile_id').notNullable();
+      table.timestamps(true, true);
+    }),
     knex.raw('CREATE EXTENSION IF NOT EXISTS pg_trgm')
   ]);
 };
@@ -75,6 +84,7 @@ exports.down = function (knex, Promise) {
     knex.schema.dropTableIfExists('notes'),
     knex.schema.dropTableIfExists('contacts'),
     knex.schema.dropTableIfExists('applications'),
+    knex.schema.dropTableIfExists('feed_messages'),
     knex.schema.dropTableIfExists('profiles'),
     knex.schema.dropTableIfExists('organizations')
   ]);
