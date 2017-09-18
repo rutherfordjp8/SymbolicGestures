@@ -4,16 +4,16 @@ import PropTypes from 'prop-types'
 import C3Chart from 'react-c3js'
 
 let SocialGraph = (props) => {
+  let graphWidth = window.innerWidth;
+  let graphHeight = window.innerHeight - 180;
   return(
-    <div>
-      <div style={{'padding': "10px"}}></div>
-      <div style={{"textAlign": "center"}}>Organization: HR80</div>
       <C3Chart
-        // size={{
-        //   width: 640
-        // }}
+        className={styles.svgcontent}
+        size={{
+          height: graphHeight
+        }}
         padding={{
-          left: 200
+          left: 135
         }}
         color={{
           pattern: ['#0da17d']
@@ -54,7 +54,7 @@ let SocialGraph = (props) => {
           }
         }}
         title={{
-          text: `Highest Salary Offered`
+          text: `My Organization's Individual Highest Salary Offered`
         }}
         legend={{hide: ['percentage']}}
         tooltip={{
@@ -64,7 +64,6 @@ let SocialGraph = (props) => {
           }
         }}
       />
-    </div>
   )
 }
 

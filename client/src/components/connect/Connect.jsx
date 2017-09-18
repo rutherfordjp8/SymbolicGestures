@@ -2,30 +2,51 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import FeedCard from './FeedCard.jsx'
+import Analytics from './../Analytics/Analytics.jsx';
+import { parse, getTime, format } from 'date-fns';
+import styles from './../../../styles/feedStyles.css'
 
 class Connect extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state={
+      cardData:[]
     };
-
+    this.updateCardData();
   }
 
-  componentWillMount() {
+  updateCardData() {
+    axios.get('/api/feed')
+      .then(feed => {
+        this.setState({
+          cardData: feed.data.results
+        })
+      })
   }
 
 
   render() {
-    return (
-      <div>
-        <div style={{'padding': "10px"}}></div>
-        hello world
+    let feedCards = this.state.cardData.map((card, i) => {
+      return (
         <FeedCard
-          image_link={"https://media.licdn.com/mpr/mprx/0_FfbQYoD6hPMMdg-SFDkzYWYEhKoJIUGSLHPJYWmR0POdq0zDwdBErdVza4E6eyiT625ZlaKY6MaR"}
-          displayName={"Jonathan Kim"}
-          message={"Congratulate Jonathan on an Offer from Google!"}
+          key = {i}
+          style={{"display": "inline", "width": "50%"}}
+          profileImg={card.image_link || "./assets/default_avatar.png"}
+          displayName={card.actor}
+          message={card.message}
           likes={2}
+          date={format(parse(card.time), 'ddd, MMM DD')}
         />
+      )
+    })
+    return (
+      <div className={styles.connect}>
+        <div className={styles.graph}>
+          <Analytics />
+        </div>
+        <div className={styles.stream}>
+          {feedCards}
+        </div>
       </div>
     )
   }
