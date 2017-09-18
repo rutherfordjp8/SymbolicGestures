@@ -7,6 +7,8 @@ import PropTypes from 'prop-types'
 import { Icon } from 'semantic-ui-react'
 import AppDrawerInfoDropDown from './AppDrawerInfoDropDown.jsx'
 import styles from '../../../styles/drawer.css';
+import currencyFormatter from 'currency-formatter';
+
 
 class AppDrawerInfo extends React.Component {
   constructor(props) {
@@ -22,6 +24,8 @@ class AppDrawerInfo extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
+    this.handleChangeSalary = this.handleChangeSalary.bind(this);
+    this.handleBlurSalary = this.handleBlurSalary.bind(this);
     this.createHistoryEntry = this.createHistoryEntry.bind(this);
   }
 
@@ -33,7 +37,7 @@ class AppDrawerInfo extends React.Component {
       stage: nextProps.application.stage,
       job_posting_source: nextProps.application.job_posting_source,
       job_posting_link: nextProps.application.job_posting_link,
-      salary: nextProps.application.salary
+      salary: currencyFormatter.format(nextProps.application.salary, { code: 'USD', precision: 0 })
     });
   }
 
@@ -53,10 +57,30 @@ class AppDrawerInfo extends React.Component {
     this.setState(obj);
   }
 
+  handleChangeSalary(event) {
+    let key = event.target.id;
+    let val = event.target.value;
+    let obj = {};
+    obj[key] = val;
+    this.setState(obj);
+  }
+
   handleBlur(event) {
     let route = `/api/applications/${this.props.application.id}`;
     let key = event.target.id;
     let val = event.target.value;
+    let body = {};
+    body[key] = val;
+    this.props.updateOneKeyValPairInFE(this.props.selectedAppIdx, key, val);
+    axios.post(route, body)
+      .then(this.props.getApplicationsFromDB());
+    // .then((message) => {console.log(message)})
+  }
+
+  handleBlurSalary(event) {
+    let route = `/api/applications/${this.props.application.id}`;
+    let key = event.target.id;
+    let val = event.target.value.replace(/\D/g,'');
     let body = {};
     body[key] = val;
     this.props.updateOneKeyValPairInFE(this.props.selectedAppIdx, key, val);
@@ -171,8 +195,8 @@ class AppDrawerInfo extends React.Component {
 
               </div>
               <TextField
-                onBlur={this.handleBlur}
-                onChange={this.handleChange}
+                onBlur={this.handleBlurSalary}
+                onChange={this.handleChangeSalary}
                 id="salary"
                 value={this.state.salary || ''}
                 floatingLabelText='salary'

@@ -239,7 +239,8 @@ module.exports.createOrUpdateContact = (req, res) => {
             role: contact.role,
             name: contact.name,
             email: contact.email,
-            phone: contact.phone
+            phone: contact.phone,
+            last_contact_date: contact.last_contact_date
           });
         } else { throw 'error updating contact'; }
       })
@@ -256,7 +257,8 @@ module.exports.createOrUpdateContact = (req, res) => {
       role: contact.role,
       name: contact.name,
       email: contact.email,
-      phone: contact.phone
+      phone: contact.phone,
+      last_contact_date: contact.last_contact_date
     })
       .save()
       .then(() => {
