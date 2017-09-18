@@ -1,0 +1,26 @@
+.connect {
+  display: grid;
+  grid-template:
+    [nav-margin] "nav nav nav nav" 80px [nav-end]
+    [content-margin] ". graph stream ." auto [content-end]
+    [bottom-margin] ". . . ." 20px [bottom-end]
+    / [margin-left] 5px [graph] 62% [stream] 35% [margin-right] 5px;
+}
+
+.graph {
+  grid-area: graph;
+	width: 100%;
+  height: 100%;
+	vertical-align: middle;
+	overflow: hidden;
+}
+
+.stream {
+  grid-area: stream;
+  overflow: scroll;
+  max-height: 41em;
+}
+
+.card {
+  margin: 15px;
+}

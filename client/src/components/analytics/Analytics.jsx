@@ -61,6 +61,7 @@ class Analytics extends React.Component {
       socialGraph = (
         <SocialGraph
           socialGraphData={this.state.socialGraphData}
+          organization={this.state.organization}
         />
       );
     } else {
