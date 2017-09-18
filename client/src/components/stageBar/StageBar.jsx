@@ -180,6 +180,8 @@ class StageBar extends React.Component {
           stagesCount={this.props.stagesCount}
           addNewStage={this.addNewStage}
           openSettings={this.handleOpen}
+          toggleStage={this.props.toggleStage}
+          stages_filter={this.props.stages_filter}
         />
       <StageBarSettings
         open={this.state.settingsOpen}
