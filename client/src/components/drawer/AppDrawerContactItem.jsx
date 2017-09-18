@@ -1,13 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
-<<<<<<< HEAD
 import { Card, Icon } from 'semantic-ui-react';
-=======
-import { Card } from 'semantic-ui-react'
-import { Icon } from 'semantic-ui-react'
 import DatePicker from 'material-ui/DatePicker';
->>>>>>> Datepick icon renders under date
 
 import styles from '../../../styles/jerryStyleBox.css';
 
