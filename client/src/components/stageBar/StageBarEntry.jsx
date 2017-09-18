@@ -7,20 +7,20 @@ const StageBarEntry = (props) => {
     'position': 'relative',
     'color': props.stage.textColor,
     'background': props.stage.backgroundColor,
-    'flex': `${props.flexSize}`
+    'flex': `${props.flexSize}`,
+    'opacity': props.opacity,
   };
   if(props.stage.name === 'Denied') {
     style.flex = 1;
   }
 
   return (
-    <li style={style}
+    <li
+      style={style}
+      onClick={() => {props.toggleStage(props.entryPosition)}}
     >
       <div className={styles.settings}>
-        <Icon
-          onClick={() => {props.openSettings(props.entryPosition)}}
-          link name='setting'
-        />
+
       </div>
       {props.count}<br/>{props.stage.name}
     </li>

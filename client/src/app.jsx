@@ -61,6 +61,15 @@ class App extends React.Component {
         { name: 'Offer', backgroundColor: '#0da17d', textColor: 'white' },
         { name: 'Denied', backgroundColor: '#eb3d34', textColor: 'white' }
       ],
+      stages_filter: {
+        0: true,
+        1: true,
+        2: true,
+        3: true,
+        4: true,
+        5: true,
+        6: true,
+      },
       isAlphabetOrder: true,
       isStageOrder: true,
       isDateDescendingOrder: true,
@@ -75,8 +84,6 @@ class App extends React.Component {
     this.stageNameToColorHash = this.stageNameToColorHash.bind(this);
     this.toggleNavBar = this.toggleNavBar.bind(this);
     this.countApplicationStages = this.countApplicationStages.bind(this);
-    this.onStagesChange = this.onStagesChange.bind(this);
-    this.updateStages = this.updateStages.bind(this);
     this.updateOneAppStage = this.updateOneAppStage.bind(this);
     this.updateOneKeyValPairInFE = this.updateOneKeyValPairInFE.bind(this);
     this.createNewApplicationInFE = this.createNewApplicationInFE.bind(this);
@@ -142,7 +149,7 @@ class App extends React.Component {
             applications.sort((a, b) => {
               return getTime(parse(b.applied_at)) - getTime(parse(a.applied_at));
             });
-            
+
             let appliedDateToCountHash = {};
             applications.forEach((application) => {
               let formattedDate = format(application.applied_at, 'ddd, MM/DD/YY');
@@ -315,21 +322,45 @@ class App extends React.Component {
   }
 
   /**
-   * Updates to database the stages for current user.
-   * @async post to database
+   * filters stages based on true and false in an array.
    */
-  updateStages() {
-    axios.post('/api/profiles', { stages_settings: this.state.stages_settings })
-      .then(function (response) {
-        console.log('post req stage succeed');
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log('post req empty application failed');
-        console.log(error);
-      });
+  filterStages() {
+    const stageNameToIndex = {
+      'Considering': 0,
+      'Applied': 1,
+      'Phone Screen': 2,
+      'Tech Screen': 3,
+      'On Site': 4,
+      'Offer': 5,
+      'Denied': 6,
+    };
+
+    let filteredApplications = [];
+    for (let i = 0; i < this.state.applications.length; i++) {
+      let application = this.state.applications[i],
+          stage = application['stage'],
+          appStage = stageNameToIndex[stage];
+      if (this.state.filter_stages[appStage]) {
+        filteredApplications.push(application)
+      }
+    }
+    this.setState({
+      applications: filteredApplications
+    })
   }
 
+  /**
+   * Toggles a stage on/off to display in the field.
+   * @param  {[type]} index [description]
+   * @return {[type]}       [description]
+   */
+  toggleStage(index) {
+    let currentSettings = this.state.stages_filter;
+    currentSettings[index] = !currentSettings[index];
+    this.setState({
+      stages_filter: currentSettings
+    }, this.filterStages);
+  }
 
   /**
    * Function to toggle nav bar on scroll. Scroll up displays navbar. Scroll down hides navbar. Does this by changing state of navBarIsHidden.
@@ -458,8 +489,8 @@ class App extends React.Component {
                         stagesCount={this.state.stagesCount}
                         stageNameToColorHash={this.state.stageNameToColorHash}
                         applications={this.state.applications}
-                        updateOneAppStage={this.updateOneAppStage}
-                        onStagesChange={this.onStagesChange}
+                        stages_filter={this.state.stages_filter}
+                        toggleStage={this.toggleStage}
                       />
                     </div>
                   </div>
@@ -517,7 +548,7 @@ class App extends React.Component {
                             intMonth={intMonth}
                             fakeSeanGraphData={data}
                           />);
-                      })} 
+                      })}
                       {/* {fakeSeanGraphData.map((data, idx) => {
                         let intMonth = data[0].appliedDate.slice(5, 7);
                         return (
