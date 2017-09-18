@@ -6,7 +6,7 @@ import FlatButton from 'material-ui/FlatButton';
 let FeedCard = () => {
   return (
     <div>
-      <Card>
+      {/* <Card>
           <CardHeader
             title="URL Avatar"
             subtitle="Subtitle"
@@ -28,7 +28,7 @@ let FeedCard = () => {
             <FlatButton label="Action1" />
             <FlatButton label="Action2" />
           </CardActions>
-        </Card>
+        </Card> */}
     </div>
   );
 }

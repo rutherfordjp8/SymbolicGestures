@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import C3Chart from 'react-c3js'
 
 let SocialGraph = (props) => {
-  console.log("1: ", props)
   return(
     <div>
       <div style={{'padding': "10px"}}></div>
