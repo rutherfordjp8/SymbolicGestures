@@ -55,9 +55,12 @@ class AppDrawerContactItem extends React.Component {
               <Card.Meta>{this.props.contact.role}</Card.Meta>
               <Card.Description>{this.props.contact.email}</Card.Description>
               <Card.Description>{this.props.contact.phone}</Card.Description>
-              <Card.Description>{"Last contact: " + this.props.contact.last_contact_date.slice(0,10)}</Card.Description>
-
-              <Icon link name='calendar' onClick={this.openDatePicker}/>
+              <div style={{display:'inline'}}>
+                <Card.Description style={{display:'inline'}}>
+                  {"Last contact: " + this.props.contact.last_contact_date.slice(0,10)}
+                </Card.Description>
+                <Icon link name='calendar' onClick={this.openDatePicker}/>
+              </div>
 
               <DatePicker
                 ref='datepicker'
