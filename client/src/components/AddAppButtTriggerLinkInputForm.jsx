@@ -25,6 +25,7 @@ export default class AddAppButtTriggerLinkInputForm extends Component {
 
   handleSubmit() {
     this.props.submitButtonClicked();
+    this.props.attemptWebScrape(0, this.state.userInput);
     this.setState({ userInput: '' });
   }
 
@@ -49,4 +50,3 @@ export default class AddAppButtTriggerLinkInputForm extends Component {
     );
   }
 }
-

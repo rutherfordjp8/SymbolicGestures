@@ -70,7 +70,9 @@ class ConditionalTableCell extends Component {
                 onChange={this.handleChange}
                 onBlur={() => {
                   this.deActivateFormView(this.props.idx, this.props.appKey, this.props.application);
-                  this.props.attemptWebScrape(this.props.idx, this.state.userInput);
+                  if (this.props.placeHolder === 'Link') {
+                    this.props.attemptWebScrape(this.props.idx, this.state.userInput);
+                  };
                 }}
                 value={this.state.userInput}
                 placeholder={this.props.placeHolder}
