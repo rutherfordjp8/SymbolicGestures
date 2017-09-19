@@ -36,6 +36,7 @@ exports.up = function (knex, Promise) {
       table.string('location', 100).nullable();
       table.string('job_posting_source', 50).nullable();
       table.string('job_posting_to_pdf_link').nullable();
+      table.string('job_company_logo', 500).nullable();
       table.integer('salary').nullable();
       table.timestamp('applied_at').defaultTo(knex.fn.now());
       table.boolean('isFavorite').defaultTo(false);
