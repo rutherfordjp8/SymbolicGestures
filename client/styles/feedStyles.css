@@ -4,7 +4,8 @@
     [nav-margin] "nav nav nav nav" 80px [nav-end]
     [content-margin] ". graph stream ." auto [content-end]
     [bottom-margin] ". . . ." 20px [bottom-end]
-    / [margin-left] 5px [graph] 62% [stream] 35% [margin-right] 5px;
+    / [margin-left] 15px [graph] 62% [stream] 36% [margin-right] 15px;
+  background-color: rgb(255, 255, 249);
 }
 
 .graph {
@@ -19,6 +20,7 @@
   grid-area: stream;
   overflow: scroll;
   max-height: 41em;
+  background-color: rgba(252, 249, 239, 0.53);
 }
 
 .card {

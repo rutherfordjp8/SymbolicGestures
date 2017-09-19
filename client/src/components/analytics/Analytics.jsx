@@ -11,6 +11,7 @@ class Analytics extends React.Component {
     };
     this.salaryIncrements = 10000;
     this.salaryStartPoint = 60000;
+    this.salaryCeiling = 200000;
     this.getOrgSalaries = this.getOrgSalaries.bind(this);
   }
 
@@ -21,27 +22,30 @@ class Analytics extends React.Component {
   getOrgSalaries() {
     axios.get('api/orgSalary')
       .then(salaries => {
-        let socialGraphData = [{name: `under $${Math.round(this.salaryStartPoint/1000)}k`, count: 0, percentage: undefined}];
+        let socialGraphData = [{name: `under $${this.numberWithCommas(Math.round(this.salaryStartPoint/1000))}k`, count: 0, percentage: undefined}];
         let graphStartingPoint = this.salaryIncrements;
         salaries.data.forEach((salary)=>{
           if(salary < this.salaryStartPoint) {
             socialGraphData[socialGraphData.length - 1].count++;
           } else {
-            while(salary >= this.salaryStartPoint) {
+            while(salary >= this.salaryStartPoint && salary <= this.salaryCeiling) {
               this.salaryStartPoint += this.salaryIncrements;
               if(salary >= this.salaryStartPoint) {
                 socialGraphData.push({
-                  name: `$${this.salaryStartPoint - 10000} to ${this.salaryStartPoint - 1}`,
+                  name: `$${this.numberWithCommas(this.salaryStartPoint - 10000)} to ${this.numberWithCommas(this.salaryStartPoint - 1)}`,
                   count: 0,
                   percentage: undefined
                 });
               } else {
                 socialGraphData.push({
-                  name: `$${this.salaryStartPoint - 10000} to ${this.salaryStartPoint - 1}`,
+                  name: `$${this.numberWithCommas(this.salaryStartPoint - 10000)} to ${this.numberWithCommas(this.salaryStartPoint - 1)}`,
                   count: 1,
                   percentage: undefined
                 });
               }
+            }
+            if(salary <= this.salaryCeiling) {
+
             }
           }
         });
@@ -53,6 +57,10 @@ class Analytics extends React.Component {
           socialGraphData: socialGraphData
         });
       });
+  }
+
+  numberWithCommas(x) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   render() {
