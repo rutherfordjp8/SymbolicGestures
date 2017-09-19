@@ -59,7 +59,7 @@ class AppDrawerContactItem extends React.Component {
           <Card>
             <Card.Content>
               <Card.Header>
-                <Icon link name='close' onClick={this.handleDeleteContact}/>
+                <Icon style={{opacity: .1}} link name='close' onClick={this.handleDeleteContact}/>
               </Card.Header>
               <Card.Header>{this.props.contact.name}</Card.Header>
 
