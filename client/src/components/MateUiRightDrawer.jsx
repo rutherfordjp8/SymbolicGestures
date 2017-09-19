@@ -111,8 +111,9 @@ export default class MateUiRightDrawer extends React.Component {
             hideInputForm={this.hideInputForm}
             submitButtonClicked={this.submitButtonClicked}
             emptyUserInput={''}
+            attemptWebScrape={this.props.attemptWebScrape}
           />
-      
+
           <Button
             onClick={this.submitButtonClicked}
             style={submitButtStyle}
