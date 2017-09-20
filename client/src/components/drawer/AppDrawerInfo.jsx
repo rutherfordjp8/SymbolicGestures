@@ -118,6 +118,7 @@ class AppDrawerInfo extends React.Component {
 
 
   render() {
+    console.log(this.props.application);
     return (
       <div className={styles.application}>
         {/*<h1>Application</h1>*/}
@@ -140,6 +141,9 @@ class AppDrawerInfo extends React.Component {
         selectedAppIdx={this.props.selectedAppIdx}
         />
         */}
+       <div className={styles.companyLogo}>
+         <img src={this.props.application.job_company_logo} />
+       </div>
         <div className={styles.applicationInfo}>
           <div className={styles.appInfo_col_1}>
             {/* <TextField

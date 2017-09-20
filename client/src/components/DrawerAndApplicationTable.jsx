@@ -70,10 +70,12 @@ export default class DrawerAndApplicationTable extends React.Component {
         const jobInfo = data.data;
         console.log(jobInfo);
         for (let key in jobInfo) {
-          if(!this.state.selectedApplication[key] && key !== 'logo') {
+          if(!this.state.selectedApplication[key]) {
             changedValues = true;
             body[key] = jobInfo[key];
+            console.log(key);
             this.props.updateOneKeyValPairInFE(idx, key, jobInfo[key]);
+            console.log(key);
           }
         }
         if (changedValues) {
