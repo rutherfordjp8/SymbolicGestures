@@ -10,19 +10,33 @@ class AppDrawerContactItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      controlledDate: null,
+      last_contact_date: '',
     };
     this.handleDeleteContact = this.handleDeleteContact.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChangeDate = this.handleChangeDate.bind(this);
     this.openDatePicker = this.openDatePicker.bind(this);
     this.findLinkedInAndSend = this.findLinkedInAndSend.bind(this);
   }
 
-  handleChange(event, date) {
+  componentWillReceiveProps(nextProps) {
     this.setState({
-      controlledDate: date,
+      last_contact_date: nextProps.contact.last_contact_date
     });
+  }
+
+
+  handleChangeDate(event, date) {
+    let key = 'last_contact_date';
+    let val = date;
+    let route = `/api/contacts/${this.props.contact.id}`
+    let body = {};
+    body[key] = val.toISOString();
+    this.setState({
+      last_contact_date: date.toISOString(),
+    });
+    axios.post(route, body);
+    this.props.getApplicationsFromDB();
   }
 
   handleDeleteContact(event) {
@@ -34,6 +48,7 @@ class AppDrawerContactItem extends React.Component {
   handleEdit(event) {
     console.log('edit the contact with this id:' , this.props.contact.id)
   }
+
   openDatePicker(){
     this.refs.datepicker.openDialog()
   }
@@ -61,17 +76,21 @@ class AppDrawerContactItem extends React.Component {
               <Card.Header>
                 <Icon style={{opacity: .1}} link name='close' onClick={this.handleDeleteContact}/>
               </Card.Header>
+
               <Card.Header>{this.props.contact.name}</Card.Header>
 
               <Card.Meta>{this.props.contact.role}</Card.Meta>
+
               <div style={{display:'inline'}}>
                 <Card.Description style={{display:'inline'}}>{this.props.contact.email}</Card.Description>
                 <Icon link name='linkedin square' onClick={this.findLinkedInAndSend}/>
               </div>
+
               <Card.Description>{this.props.contact.phone}</Card.Description>
+
               <div style={{display:'inline'}}>
                 <Card.Description style={{display:'inline'}}>
-                  {"Last contact: " + this.props.contact.last_contact_date.slice(0,10)}
+                  {"Last contact: " + this.state.last_contact_date.slice(0,10) + "   "}
                 </Card.Description>
                 <Icon link name='calendar' onClick={this.openDatePicker}/>
               </div>
@@ -80,8 +99,9 @@ class AppDrawerContactItem extends React.Component {
                 ref='datepicker'
                 style={{display: 'none'}}
                 hintText="Controlled Date Input"
-                value={this.state.controlledDate}
-                onChange={this.handleChange}
+                // value={this.state.controlledDate}
+                onChange={this.handleChangeDate}
+                autoOk={true}
               />
 
             </Card.Content>
