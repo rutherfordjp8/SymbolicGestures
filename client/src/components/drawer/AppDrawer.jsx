@@ -45,8 +45,8 @@ class AppDrawer extends React.Component {
       </div>
       <div>
         <FlatButton
-          label="Delete"
-          style={{'float': 'right','color': 'red'}}
+          label="Delete App"
+          style={{'float': 'right','color': 'red',opacity: .2}}
           primary={true}
           keyboardFocused={true}
           onClick={this.deleteApplication}

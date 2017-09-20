@@ -12,7 +12,6 @@ export default class THCellStarIcon extends Component {
   }
 
   toggleStar() {
-    console.log(this.state.isEmptyStar);
     this.setState({ isEmptyStar: !this.state.isEmptyStar });
   }
 

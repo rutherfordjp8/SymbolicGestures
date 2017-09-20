@@ -8,6 +8,8 @@ import { Icon } from 'semantic-ui-react'
 import AppDrawerInfoDropDown from './AppDrawerInfoDropDown.jsx'
 import styles from '../../../styles/drawer.css';
 import currencyFormatter from 'currency-formatter';
+import DatePicker from 'material-ui/DatePicker';
+import { format, parse } from 'date-fns';
 
 
 class AppDrawerInfo extends React.Component {
@@ -23,6 +25,7 @@ class AppDrawerInfo extends React.Component {
       salary: ''
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleChangeDate = this.handleChangeDate.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
     this.handleChangeSalary = this.handleChangeSalary.bind(this);
     this.handleBlurSalary = this.handleBlurSalary.bind(this);
@@ -30,9 +33,10 @@ class AppDrawerInfo extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log("applied_at: ", parse(nextProps.application.applied_at))
     this.setState({
       company_name: nextProps.application.company_name,
-      applied_at: nextProps.application.applied_at,
+      applied_at: parse(nextProps.application.applied_at || new Date()),
       job_title: nextProps.application.job_title,
       stage: nextProps.application.stage,
       job_posting_source: nextProps.application.job_posting_source,
@@ -55,6 +59,21 @@ class AppDrawerInfo extends React.Component {
     let obj = {};
     obj[key] = val;
     this.setState(obj);
+  }
+
+  handleChangeDate(event, date) {
+    let key = 'applied_at';
+    let val = date;
+    let obj = {};
+    obj[key] = val;
+    this.setState(obj);
+
+    let route = `/api/applications/${this.props.application.id}`
+    let body = {};
+    body[key] = val.toISOString();
+    this.props.updateOneKeyValPairInFE(this.props.selectedAppIdx, key, val);
+    axios.post(route, body)
+    .then(this.props.getApplicationsFromDB())
   }
 
   handleChangeSalary(event) {
@@ -125,12 +144,18 @@ class AppDrawerInfo extends React.Component {
         */}
         <div className={styles.applicationInfo}>
           <div className={styles.appInfo_col_1}>
-            <TextField
+            {/* <TextField
               onBlur={this.handleBlur}
               onChange={this.handleChange}
               id="applied_at"
               value={this.state.applied_at || ''}
               floatingLabelText='applied_at'
+            /> */}
+            <DatePicker
+              floatingLabelText="applied_at"
+              value={this.state.applied_at || {}}
+              onChange={this.handleChangeDate}
+              autoOk={true}
             />
             <TextField
               onBlur={this.handleBlur}

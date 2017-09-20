@@ -92,7 +92,6 @@ export default class DrawerAndApplicationTable extends React.Component {
   }
 
   openDrawerWhenOneAppClick(application, idx, e) {
-    console.log('openDrawerWhenOneAppClick');
 
     e.preventDefault();
 
@@ -220,14 +219,14 @@ export default class DrawerAndApplicationTable extends React.Component {
                     toggleIsFavoriteForOneAppInFE={this.props.toggleIsFavoriteForOneAppInFE}
                   />
                   {/* style={dateStyle} */}
-                  <Table.Cell>{format(parse(application.created_at), 'ddd, MMM DD, YY')}</Table.Cell>
+                  <Table.Cell>{format(parse(application.applied_at), 'ddd, MMM DD, YY')}</Table.Cell>
                   <ConditionalTableCell
                     application={application}
                     appKey={'company_name'}
                     placeHolder={'Company Name'}
                     updateOneKeyValPairInFE={this.props.updateOneKeyValPairInFE}
                     idx={idx}
-                    cellStyle={{ padding: '0.2% 0.2% 0px 0.2%' }}  
+                    cellStyle={{ padding: '0.2% 0.2% 0px 0.2%' }}
                   />
                   <ConditionalTableCell
                     application={application}
