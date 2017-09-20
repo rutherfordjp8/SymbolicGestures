@@ -158,6 +158,7 @@ class AppDrawerInfo extends React.Component {
               value={this.state.applied_at || {}}
               onChange={this.handleChangeDate}
               autoOk={true}
+              container="inline"
             />
             <TextField
               onBlur={this.handleBlur}
