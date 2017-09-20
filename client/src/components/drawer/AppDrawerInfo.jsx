@@ -33,7 +33,6 @@ class AppDrawerInfo extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("applied_at: ", parse(nextProps.application.applied_at))
     this.setState({
       company_name: nextProps.application.company_name,
       applied_at: parse(nextProps.application.applied_at || new Date()),
@@ -93,7 +92,6 @@ class AppDrawerInfo extends React.Component {
     this.props.updateOneKeyValPairInFE(this.props.selectedAppIdx, key, val);
     axios.post(route, body)
       .then(this.props.getApplicationsFromDB());
-    // .then((message) => {console.log(message)})
   }
 
   handleBlurSalary(event) {
