@@ -70,7 +70,7 @@ class AppDrawerInfo extends React.Component {
     let route = `/api/applications/${this.props.application.id}`
     let body = {};
     body[key] = val.toISOString();
-    this.props.updateOneKeyValPairInFE(this.props.selectedAppIdx, key, val);
+    this.props.updateOneKeyValPairInFE(this.props.selectedAppIdx, key, val.toISOString());
     axios.post(route, body)
     .then(this.props.getApplicationsFromDB())
   }
