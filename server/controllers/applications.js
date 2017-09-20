@@ -73,6 +73,7 @@ module.exports.createOrUpdateApp = (req, res) => {
             location: application.location,
             job_posting_source: application.job_posting_source,
             job_posting_to_pdf_link: application.job_posting_to_pdf_link,
+            job_company_logo: application.job_company_logo,
             salary: application.salary,
             applied_at: application.applied_at,
             isFavorite: application.isFavorite
@@ -324,7 +325,7 @@ module.exports.webScraper = (req,res) => {
         job_title: jobTitle,
         job_summary: jobSummary,
         location: location,
-        logo: logo,
+        job_company_logo: logo,
         job_posting_source: source.hostname
       }
       res.status(200).send(response);

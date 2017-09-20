@@ -32,6 +32,11 @@
   padding: 5px;
 }
 
+.companyLogo {
+  max-width: 400px;
+  max-height: 200px;
+}
+
 .jobLinkRow {
   display: flex;
   flex-direction: row;
