@@ -330,8 +330,12 @@ module.exports.webScraper = (req,res) => {
       }
       res.status(200).send(response);
     });
+  } else if (source.hostname) {
+    res.status(200).send({
+      job_posting_source: source.hostname
+    });
   } else {
-    res.status(502).send(link);
+    res.status(500).send({});
   }
 
 
