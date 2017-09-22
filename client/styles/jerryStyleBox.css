@@ -1,5 +1,9 @@
 .contact {
-  width: 100%;
+  width: 80%;
   margin: 10px;
+  margin-left: 10.5%;
+  margin-right: 15px;
+  padding: 13px;
   text-align: left;
+  align-self: center;
 }

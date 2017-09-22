@@ -51,7 +51,7 @@ class AppDrawer extends React.Component {
           />
         </div>
         <div>
-          <AppDrawerHistory application={this.props.application} />
+          {/*<AppDrawerHistory application={this.props.application} />*/}
         </div>
         <div>
           <FlatButton

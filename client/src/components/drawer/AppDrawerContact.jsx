@@ -145,15 +145,54 @@ class AppDrawerContact extends React.Component {
           </Dialog>
         </div>
 
-        {this.props.application.contacts.map((contact, index) => {
-          return (
-            <AppDrawerContactItem
-              contact={contact}
-              key={index}
-              getApplicationsFromDB={this.props.getApplicationsFromDB}
-            />
-          );
-        })}
+
+
+        <div className="container" style={{'height':'100%', 'width': '100%'}}>
+          <div id="myCarousel" className="carousel slide" data-ride="carousel">
+
+
+            <div className="carousel-inner">
+              {this.props.application.contacts.map((contact, index) => {
+                if (index === 0) {
+                  return (
+                    <div className="item active">
+                      <AppDrawerContactItem
+                        contact={contact}
+                        key={index}
+                        getApplicationsFromDB={this.props.getApplicationsFromDB}
+                        />
+                    </div>
+                  );
+                } else {
+                  return (
+                    <div className="item">
+                      <AppDrawerContactItem
+                        contact={contact}
+                        key={index}
+                        getApplicationsFromDB={this.props.getApplicationsFromDB}
+                        />
+                    </div>
+                  )
+                }
+              })}
+            </div>
+
+
+
+
+            <a className="left carousel-control" href="#myCarousel" data-slide="prev" style={{background:'none'}}>
+              <span className="glyphicon glyphicon-chevron-left" style={{color: 'var(--headers-bg-color)'}}></span>
+              <span className="sr-only">Previous</span>
+            </a>
+            <a className="right carousel-control" href="#myCarousel" data-slide="next" style={{background:'none'}}>
+              <span className="glyphicon glyphicon-chevron-right" style={{color: 'var(--headers-bg-color)'}}></span>
+              <span className="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+
+
+
 
 
       </div>

@@ -122,6 +122,7 @@
   text-align: center;
   width: 35%;
   margin-top: 10px;
+  /*height: 305px;*/
   align-self: flex-start;
   overflow: hidden;
   border-top-left-radius: 10px;
