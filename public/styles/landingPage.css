@@ -17,11 +17,19 @@
   display: none;
 }
 
+<<<<<<< HEAD
 .test {
   /*margin-top: 15%;*/
   text-align: center;
   /*border: solid;*/
   font-family: lato;
+=======
+.loginForm {
+  /*margin-top: 15%;*/
+  text-align: center;
+  /*border: solid;*/
+  font-family: Helvetica;
+>>>>>>> Styled and changed loginOptions on landing page
   border-width: 2px;
   border-color: #4d7198;
   border-radius: 15px;
