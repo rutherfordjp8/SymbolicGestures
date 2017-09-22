@@ -17,6 +17,15 @@ const MiniStageBarEntry = (props) => {
     el.target.style.opacity = .2;
   }
 
+  if(props.stage.name === 'Considering') {
+    style.borderTopLeftRadius = '15px';
+    style.borderBottomLeftRadius = '15px';
+  }
+  if(props.stage.name === 'Denied') {
+    style.borderTopRightRadius = '15px';
+    style.borderBottomRightRadius = '15px';
+  }
+
   if (props.addOnHover) {
     return (
       <li
